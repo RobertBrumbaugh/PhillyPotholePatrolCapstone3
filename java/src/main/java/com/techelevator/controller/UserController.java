@@ -7,16 +7,21 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.techelevator.dao.UserDAO;
+import com.techelevator.dao.UserSqlDAO;
 import com.techelevator.model.User;
 
 @RestController
 public class UserController {
 	
-	private UserDAO userDao;
+	private UserSqlDAO UserSqlDAO;
+	
+	public UserController(UserSqlDAO UserSqlDAO) {
+		this.UserSqlDAO = UserSqlDAO;
+	}
 	
 	@RequestMapping(value = "/users", method = RequestMethod.GET)
 	public List<User> getUsers() {
-		return userDao.findAll();
+		return UserSqlDAO.findAll();
 	}
 
 }
