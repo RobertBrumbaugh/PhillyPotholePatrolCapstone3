@@ -7,3 +7,35 @@
     <router-view />
   </div>
 </template>
+
+
+<style>
+body {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin: 60px;
+  background: rgb(144, 223, 223);
+  display: flex;
+  justify-content: center;
+}
+
+#app {
+  width: 60%;
+  height: 600px;
+  background: white;
+  border-radius: 30px;
+  padding: 20px;
+}
+
+#nav {
+  font-size: 18px;
+  margin-bottom: 50px;
+
+  
+  
+}
+
+</style>
