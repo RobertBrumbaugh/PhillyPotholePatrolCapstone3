@@ -106,6 +106,23 @@ INSERT INTO reports (user_id, location_id, reported, status)
         ( 1, 1, '4/5/2021', 1),
         ( 1, 2, '4/6/2021', 1);
         
+
+GRANT ALL
+ON ALL TABLES IN SCHEMA public
+TO final_capstone_owner;
+
+GRANT ALL
+ON ALL SEQUENCES IN SCHEMA public
+TO final_capstone_owner;
+
+GRANT SELECT, INSERT, UPDATE, DELETE
+ON ALL TABLES IN SCHEMA public
+TO final_capstone_appuser;
+
+GRANT USAGE, SELECT
+ON ALL SEQUENCES IN SCHEMA public
+TO final_capstone_appuser;
+        
         
 COMMIT TRANSACTION;
         
