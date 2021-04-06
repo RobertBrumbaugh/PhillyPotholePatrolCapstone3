@@ -1,14 +1,12 @@
 <template>
   <div class="home">
-     <report-list/>
+    <h1>Home</h1>
+    <p>You must be authenticated to see this</p>
   </div>
- 
 </template>
 
 <script>
-import ReportList from '../components/ReportList.vue';
 export default {
-  components: { ReportList },
   name: "home"
 };
 </script>
