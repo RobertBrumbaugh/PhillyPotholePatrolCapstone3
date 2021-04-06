@@ -1,26 +1,26 @@
 <template>
   <div class="pothole-list">
     <h1>Active Potholes</h1>
-    this is where our fun potholes will be
-    <div v-for="report in reports" v-bind:key="report.id" class="report">
-
+    
+    <div v-for="report in reports" v-bind:key="report.report_id" class="report">
+    <h1>{{report.report_id}} {{report.user_id}} {{report.location_id}} {{report.status_id}} {{report.reported}}</h1>
     </div>
     <router-link v-bind:to="{ name: 'new-pothole-report' }">Add a Pothole</router-link>
   </div>
 </template>
 
 <script>
-import ReportService from "@/services/ReportService.js";
+import ReportService from '../services/ReportService';
 
 export default {
-  name: "reports",
+  name: 'report-list',
   data() {
     return {
-      reports: [],
-    };
+      reports: []
+    }
   },
   created() {
-    ReportService.list().then((response) => {
+   ReportService.list().then(response => {
       this.reports = response.data;
     });
   },

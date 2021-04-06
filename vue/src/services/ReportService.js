@@ -1,17 +1,13 @@
 import axios from 'axios'; 
 
-const http = axios.create({
-    baseURL: "http://localhost:8080"
-});
-
 export default {
 
     list() {
-        return http.get('/reports');
+        return axios.get('/reports');
       },
     
     get(id) {
-        return http.get(`/reports/${id}`);
+        return axios.get(`/reports/${id}`);
       }
 
 
