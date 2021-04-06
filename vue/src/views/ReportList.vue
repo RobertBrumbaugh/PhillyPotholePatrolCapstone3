@@ -3,11 +3,12 @@
     <h1>Active Potholes</h1>
 
     <div v-for="report in reports" v-bind:key="report.report_id" class="report">
-      <h1>
-        {{ report.report_id }} {{ report.user_id }} {{ report.location_id }}
-        {{ report.status }} {{ report.reported }}
-      </h1>
+      <p>
+       Report id: {{ report.report_id }}  User Id: {{ report.user_id }} Location: {{ report.location_id }}
+       Status: {{ report.status }} Date Reported:{{ report.reported }}
+      </p>
     </div>
+    <router-link v-bind:to="{ name: 'new-pothole-report'}"> Save New Pothole </router-link>
   </div>
 </template>
 

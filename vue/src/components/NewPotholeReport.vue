@@ -1,13 +1,12 @@
 <template>
   <form class="new-pothole-report" v-on:submit.prevent="saveReport">
-    <!-- 
+    
     <input class="user-input" type="text" placeholder="User" v-model="report.user" />
     <input class="location-input" type="text" placeholder="Location" v-model="report.location" />
-    <input class="status-input" type="text" placeholder="Status" v-model="report.status" /> 
     <input class="severity-input" type="text" placeholder="Severity" v-model="report.severity" /> 
     
-    this will probably be changed?
-    -->
+    <!-- this will probably be changed? -->
+   
     <button>Save</button>
   </form>
 </template>
@@ -18,9 +17,8 @@ export default {
     data(){
         return {
             report: {
-                user: '',
-                status: '',
-                location: '',
+                user_id: '',
+                location_id: '',
                 severity: '',
             }
         }
@@ -28,9 +26,8 @@ export default {
     methods: {
         saveReport() {
             this.report = {
-                user: '',
-                status: '',
-                location: '',
+                user_id: '',
+                location_id: '',
                 severity: ''
             };
         }
