@@ -36,5 +36,36 @@ public class ReportController {
 	public List<Report> getReports() {
 		return ReportSqlDAO.listReports();
 	}
-
+	
+	@ResponseStatus(HttpStatus.CREATED)
+	@RequestMapping(path = "/reports", method = RequestMethod.POST)
+	public void postReport(@RequestBody Report report) {
+		ReportSqlDAO.addReport(report);
+	}
+	
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	@RequestMapping(path = "/reports/{report_id}", method = RequestMethod.DELETE)
+	public void deleteReport(@PathVariable int report_id) {
+		ReportSqlDAO.deleteReportByReportId(report_id);
+	}
+	
+	@RequestMapping(path = "/reports/{report_id}/status/{status_id}", method = RequestMethod.PUT)
+	public void updateStatus(@PathVariable int report_id, @PathVariable int status_id) {
+		ReportSqlDAO.updateStatusByReportId(report_id, status_id);
+	}
+	
+	@RequestMapping(path = "/reports/{report_id}/severity/{severity_id}", method = RequestMethod.PUT)
+	public void updateSeverity(@PathVariable int report_id, @PathVariable int severity_id) {
+		ReportSqlDAO.updateSeverityByReportId(report_id, severity_id);
+	}
+	
+	@RequestMapping(path = "/reports/{report_id}/inspected/{inspected_date}", method = RequestMethod.PUT)
+	public void updateInspected(@PathVariable int report_id, @PathVariable String inspected_date) {
+		ReportSqlDAO.updateInspectedByReportId(report_id, inspected_date);
+	}
+	
+	@RequestMapping(path = "/reports/{report_id}/repaired/{repaired_date}", method = RequestMethod.PUT)
+	public void updateRepaired(@PathVariable int report_id, @PathVariable String repaired_date) {
+		ReportSqlDAO.updateRepairedByReportId(report_id, repaired_date);
+	}
 }

@@ -1,6 +1,6 @@
 package com.techelevator.model;
 
-import java.util.Date;
+import java.math.BigDecimal;
 
 public class Report {
 	
@@ -8,16 +8,18 @@ public class Report {
 
 	private int report_id;
 	private int user_id;
-	private int location_id;
-	private Date reported;
-	private Date inspected;
-	private Date repaired;
+	private BigDecimal lat;
+	private BigDecimal lng;
+	private String reported;
+	private String inspected;
+	private String repaired;
 	private int status;
 	private int severity;
 	private String img;
 	
 	
 	// Getters and Setters
+	
 	
 	public int getReport_id() {
 		return report_id;
@@ -31,28 +33,34 @@ public class Report {
 	public void setUser_id(int user_id) {
 		this.user_id = user_id;
 	}
-	public int getLocation_id() {
-		return location_id;
+	public BigDecimal getLat() {
+		return lat;
 	}
-	public void setLocation_id(int location_id) {
-		this.location_id = location_id;
+	public void setLat(BigDecimal lat) {
+		this.lat = lat;
 	}
-	public Date getReported() {
+	public BigDecimal getLng() {
+		return lng;
+	}
+	public void setLng(BigDecimal lng) {
+		this.lng = lng;
+	}
+	public String getReported() {
 		return reported;
 	}
-	public void setReported(Date reported) {
+	public void setReported(String reported) {
 		this.reported = reported;
 	}
-	public Date getInspected() {
+	public String getInspected() {
 		return inspected;
 	}
-	public void setInspected(Date inspected) {
+	public void setInspected(String inspected) {
 		this.inspected = inspected;
 	}
-	public Date getRepaired() {
+	public String getRepaired() {
 		return repaired;
 	}
-	public void setRepaired(Date repaired) {
+	public void setRepaired(String repaired) {
 		this.repaired = repaired;
 	}
 	public int getStatus() {
@@ -73,5 +81,10 @@ public class Report {
 	public void setImg(String img) {
 		this.img = img;
 	}
+	
+
+	
+	
+	
 	
 }

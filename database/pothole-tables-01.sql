@@ -30,26 +30,16 @@ CREATE TABLE reports
 (
 	report_id serial,
 	user_id int,
-	location_id int,
-	reported date,
-	inspected date,
-	repaired date,
+	lat float,
+	lng float, 
+	reported varchar(32),
+	inspected varchar(32),
+	repaired varchar(32),
 	status int,
 	severity int,
 	img varchar(300),
 	
 	constraint pk_reports primary key (report_id)
-);
-
-CREATE TABLE locations
-(
-        location_id serial,
-        street varchar(100),
-        city varchar(100),
-        district varchar(100),
-        zip int,
-        
-        constraint pk_locations primary key (location_id)
 );
 
 CREATE TABLE status_types
@@ -71,10 +61,6 @@ CREATE TABLE severity_types
 ALTER TABLE reports
 ADD CONSTRAINT
         fk_reports_user_id foreign key (user_id) references users (user_id);
-        
-ALTER TABLE reports
-ADD CONSTRAINT
-        fk_reports_location_id foreign key (location_id) references locations (location_id);
 
 ALTER TABLE reports
 ADD CONSTRAINT
@@ -95,16 +81,11 @@ INSERT INTO status_types (status_id, status_desc)
         (1, 'reported'),
         (2, 'inspected'),
         (3, 'repaired');
-
-INSERT INTO locations (street, city, district, zip) 
-        VALUES 
-        ('6902 Hollywood Blvd', 'Los Angeles', 'CA', 90028),
-        ('1502 Market Street', 'Philadelphia', 'PA', 19102);
         
-INSERT INTO reports (user_id, location_id, reported, status) 
+INSERT INTO reports (user_id, lat, lng, reported, status) 
         VALUES 
-        ( 1, 1, '4/5/2021', 1),
-        ( 1, 2, '4/6/2021', 1);
+        ( 1, 39.952778, -75.163611, '2021-4-5', 1),
+        ( 1, 39.972778, -75.131611, '2021-4-6', 1);
         
 
 GRANT ALL
@@ -125,4 +106,3 @@ TO final_capstone_appuser;
         
         
 COMMIT TRANSACTION;
-        
