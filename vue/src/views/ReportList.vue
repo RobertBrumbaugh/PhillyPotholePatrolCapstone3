@@ -8,7 +8,7 @@
        Status: {{ report.status }} Date Reported:{{ report.reported }}
       </p>
     </div>
-    <router-link v-bind:to="{ name: 'new-pothole-report'}"> Save New Pothole </router-link>
+    <router-link v-bind:to="{ name: 'add-report'}"> Save New Pothole </router-link>
   </div>
 </template>
 

@@ -5,6 +5,7 @@ import Login from '../views/Login.vue'
 import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import ReportList from '../views/ReportList.vue'
+import AddReport from '../views/AddReport.vue'
 import store from '../store/index'
 
 Vue.use(Router)
@@ -62,6 +63,14 @@ const router = new Router({
         requiresAuth: false
       }
     },
+    {
+      path: '/addreport',
+      name: 'add-report',
+      component: AddReport,
+      meta: {
+        requiresAuth: false
+      }
+    }
   ]
 })
 

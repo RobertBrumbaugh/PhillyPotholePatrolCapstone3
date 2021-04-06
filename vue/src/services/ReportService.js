@@ -9,10 +9,12 @@ export default {
     list() {
         return http.get('/reports');
       },
+
+    addReport(report) {
+      return http.post('/reports', report);
+    }
     
-    // get(id) {
-    //     return http.get(`/reports/${id}`);
-    //   }
+
 
 
 }

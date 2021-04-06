@@ -12,24 +12,33 @@
 </template>
 
 <script>
+import ReportService from '../services/ReportService';
 export default {
     name: "new-pothole-report", 
     data(){
         return {
-            report: {
+            report: { 
                 user_id: '',
-                location_id: '',
-                severity: '',
+                lat: '', 
+                long: '',
+                status: '', 
+                reported: '',
             }
         }
     },
     methods: {
         saveReport() {
-            this.report = {
-                user_id: '',
-                location_id: '',
-                severity: ''
-            };
+            ReportService.addReport(this.report).then(response => {
+                if (response.status === 201) {
+                this.report = {
+                    user_id: '',
+                    lat: '', 
+                    long: '',
+                    status: '', 
+                    reported: ''
+                }
+                }
+            })
         }
     }
 
