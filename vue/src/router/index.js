@@ -68,7 +68,7 @@ const router = new Router({
       name: 'add-report',
       component: AddReport,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
       }
     }
   ]

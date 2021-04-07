@@ -1,12 +1,13 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link v-bind:to="{ name: 'home' }">Home</router-link>&nbsp;|&nbsp;
-      <router-link v-bind:to="{ name: 'report-list' }">Current Potholes</router-link>&nbsp;|&nbsp;
-      <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
+      <router-link v-bind:to="{ name: 'home' }"> Home </router-link>&nbsp;|&nbsp;
+      <router-link v-bind:to="{ name: 'report-list' }"> Current Potholes </router-link>&nbsp;|&nbsp;
+      <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''"> Logout </router-link>
     </div>
-    
+    <div id = "main">
     <router-view />
+    </div>
   </div>
 </template>
 
@@ -58,6 +59,9 @@ body{
     width: 100%;
     width: 70vw;
     height: 80vh;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
 
 }
 
@@ -65,7 +69,14 @@ body{
   font-size: 18px;
   margin-bottom: 50px;
   color: white;
-  justify-content: center;
+  display: flex;
+  justify-content: flex-end;
 }
 
+
+#main {
+  display: flex;
+  justify-content: center;
+
+}
 </style>

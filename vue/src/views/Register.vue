@@ -5,7 +5,8 @@
       <div class="alert alert-danger" role="alert" v-if="registrationErrors">
         {{ registrationErrorMsg }}
       </div>
-      <label for="username" class="sr-only">Username</label>
+      <div>
+      <label for="username" class="sr-only">Username: </label>
       <input
         type="text"
         id="username"
@@ -15,7 +16,10 @@
         required
         autofocus
       />
-      <label for="password" class="sr-only">Password</label>
+      </div>
+      <br>
+      <div>
+      <label for="password" class="sr-only">Password: </label>
       <input
         type="password"
         id="password"
@@ -24,6 +28,7 @@
         v-model="user.password"
         required
       />
+   <!-- <br>
       <input
         type="password"
         id="confirmPassword"
@@ -31,8 +36,13 @@
         placeholder="Confirm Password"
         v-model="user.confirmPassword"
         required
-      />
+      /> -->
+      </div>
+      <br>
+      <div>
       <router-link :to="{ name: 'login' }">Have an account?</router-link>
+      </div>
+      <br>
       <button class="btn btn-lg btn-primary btn-block" type="submit">
         Create Account
       </button>
@@ -90,4 +100,15 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+
+button {
+  width: 100px;
+  background-color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
+  display: block;
+  margin: 0 auto;
+  
+}</style>
