@@ -4,7 +4,7 @@
 
     <div v-for="report in reports" v-bind:key="report.report_id" class="report">
       <p>
-       Report id: {{ report.report_id }}  User Id: {{ report.user_id }} Location: {{ report.location_id }}
+       Report id: {{ report.report_id }}  Username: {{ report.username }} Latitude: {{ report.lat }} Longitude: {{report.lng}}
        Status: {{ report.status }} Date Reported:{{ report.reported }}
       </p>
     </div>

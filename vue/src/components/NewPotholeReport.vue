@@ -1,5 +1,5 @@
 <template>
-  <form class="new-pothole-report" @submit.prevent="saveReport">
+  <form class="new-pothole-report" v-on:submit.prevent>
     <div>
     <input class="user-input" type="text" placeholder="User" v-model="report.username" />
     </div>
@@ -11,7 +11,7 @@
     </div>  <div>
     <input class="lng-input" type="text" placeholder="Longitude" v-model="report.lng" />
     </div>
-    <button type="submit">Save</button>
+    <button type="submit" v-on:click="saveReport">Save</button>
     <!-- this will probably be changed? -->
    <GoogleMap />
     
@@ -50,6 +50,7 @@ export default {
                     status: '', 
                     reported: ''
                 }
+                this.$router.push('/reports')
                 }
             })
         }
