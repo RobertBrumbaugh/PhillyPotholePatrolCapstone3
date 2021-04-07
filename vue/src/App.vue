@@ -13,8 +13,6 @@
 
 <script>
 
-
-
 export default {
   name: 'App',
   components: {
@@ -35,5 +33,14 @@ export default {
     position: relative;
  
   }
+
+#nav {
+  font-size: 18px;
+  margin-bottom: 50px;
+  color: white;
+  display: flex;
+  justify-content: flex-end;
+  
+}
 
 </style>
