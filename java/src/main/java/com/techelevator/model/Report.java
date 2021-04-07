@@ -7,7 +7,7 @@ public class Report {
 	// data members
 
 	private int report_id;
-	private int user_id;
+	private String username;
 	private BigDecimal lat;
 	private BigDecimal lng;
 	private String reported;
@@ -16,7 +16,6 @@ public class Report {
 	private int status;
 	private int severity;
 	private String img;
-	
 	
 	// Getters and Setters
 	
@@ -27,11 +26,11 @@ public class Report {
 	public void setReport_id(int report_id) {
 		this.report_id = report_id;
 	}
-	public int getUser_id() {
-		return user_id;
+	public String getUsername() {
+		return username;
 	}
-	public void setUser_id(int user_id) {
-		this.user_id = user_id;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 	public BigDecimal getLat() {
 		return lat;
@@ -81,6 +80,12 @@ public class Report {
 	public void setImg(String img) {
 		this.img = img;
 	}
+	
+	
+
+	
+	
+	
 	
 
 	

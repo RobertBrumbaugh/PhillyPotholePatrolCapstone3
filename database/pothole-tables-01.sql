@@ -20,7 +20,7 @@ CREATE TABLE users (
 	username varchar(50) NOT NULL,
 	password_hash varchar(200) NOT NULL,
 	role varchar(50) NOT NULL,
-	CONSTRAINT PK_user PRIMARY KEY (user_id)
+	CONSTRAINT PK_user PRIMARY KEY (username)
 );
 
 INSERT INTO users (username,password_hash,role) VALUES ('user','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
@@ -29,7 +29,7 @@ INSERT INTO users (username,password_hash,role) VALUES ('admin','$2a$08$UkVvwpUL
 CREATE TABLE reports
 (
 	report_id serial,
-	user_id int,
+	username varchar(50),
 	lat float,
 	lng float, 
 	reported varchar(32),
@@ -60,7 +60,7 @@ CREATE TABLE severity_types
 
 ALTER TABLE reports
 ADD CONSTRAINT
-        fk_reports_user_id foreign key (user_id) references users (user_id);
+        fk_reports_username foreign key (username) references users (username);
 
 ALTER TABLE reports
 ADD CONSTRAINT
@@ -82,10 +82,10 @@ INSERT INTO status_types (status_id, status_desc)
         (2, 'inspected'),
         (3, 'repaired');
         
-INSERT INTO reports (user_id, lat, lng, reported, status) 
+INSERT INTO reports (username, lat, lng, reported, status) 
         VALUES 
-        ( 1, 39.952778, -75.163611, '2021-4-5', 1),
-        ( 1, 39.972778, -75.131611, '2021-4-6', 1);
+        ( 'user', 39.952778, -75.163611, '2021-4-5', 1),
+        ( 'user', 39.972778, -75.131611, '2021-4-6', 1);
         
 
 GRANT ALL

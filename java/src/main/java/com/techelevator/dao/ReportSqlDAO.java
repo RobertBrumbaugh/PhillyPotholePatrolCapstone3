@@ -39,10 +39,10 @@ public class ReportSqlDAO implements ReportDAO {
 	public void addReport(Report report) {
 
 		String sql = "INSERT INTO reports "
-				+ "(user_id, lat, lng, reported, status)"
+				+ "(username, lat, lng, reported, status)"
 				+ "VALUES (?,?,?,?,?)";
 
-		jdbcTemplate.update(sql, report.getUser_id(), report.getLat(), 
+		jdbcTemplate.update(sql, report.getUsername(), report.getLat(), 
 				report.getLng(), report.getReported(), 1);
 	}
 
@@ -87,7 +87,7 @@ public class ReportSqlDAO implements ReportDAO {
 	private Report mapRowToReport(SqlRowSet rs) {
 		Report report = new Report();
 		report.setReport_id(rs.getInt("report_id"));
-		report.setUser_id(rs.getInt("user_id"));
+		report.setUsername(rs.getString("username"));
 		report.setLat(rs.getBigDecimal("lat"));
 		report.setLng(rs.getBigDecimal("lng"));
 		report.setReported(rs.getString("reported"));
