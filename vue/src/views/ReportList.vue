@@ -9,6 +9,7 @@
       </p>
     </div>
     <router-link v-bind:to="{ name: 'add-report'}"> Save New Pothole </router-link>
+    <router-link v-bind:to="{ name: 'edit-report'}"> Edit Report </router-link>
   </div>
 </template>
 

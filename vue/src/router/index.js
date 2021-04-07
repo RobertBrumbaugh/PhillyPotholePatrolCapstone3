@@ -6,6 +6,7 @@ import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import ReportList from '../views/ReportList.vue'
 import AddReport from '../views/AddReport.vue'
+import EditReport from '../views/EditReport.vue'
 import store from '../store/index'
 
 Vue.use(Router)
@@ -70,7 +71,15 @@ const router = new Router({
       meta: {
         requiresAuth: true
       }
-    }
+    },
+    {
+      path: '/reports',
+      name: 'edit-report',
+      component: EditReport,
+      meta: {
+        requiresAuth: true
+      }
+    },
   ]
 })
 

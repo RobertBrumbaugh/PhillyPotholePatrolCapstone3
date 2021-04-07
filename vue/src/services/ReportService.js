@@ -10,6 +10,8 @@ export default {
         return http.get('/reports');
     },
 
+    // I think we need to add a get id method
+
     addReport(report) {
       return http.post('/reports', report);
     },

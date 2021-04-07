@@ -1,0 +1,72 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: rgb(125, 214, 195);
+    font-family: 'Open Sans', sans-serif;
+    /* background-image: url('https://bitbucket.org/te-phl-cohort-3/phl-3-final-capstone-avacado/src/0e00349d2dc688e55f357204f14150a00e78ad1f/vue/src/assets/Pothole%20Logo.png'); */
+    /* background-image: url('https://images.unsplash.com/photo-1569761316261-9a8696fa2ca3?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'); 
+    background-repeat: no-repeat;
+    background-size: 120%;  */
+}
+
+#app {
+    background: #2b2a2ad8;
+    color: white;
+    padding: 2em;
+    border-radius: 30px;
+    width: 100%;
+    width: 70vw;
+    height: 80vh;
+    overflow: auto;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+
+}
+
+#nav {
+  font-size: 18px;
+  margin-bottom: 50px;
+  color: white;
+  display: flex;
+  justify-content: flex-end;
+}
+
+
+#main {
+  display: flex;
+  justify-content: center;
+
+}
+
+a:link {
+  color: rgb(106, 176, 185);
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:visited {
+  color: pink;
+  background-color: transparent;
+  text-decoration: none;
+  
+}
+
+a:hover {
+  color: rgb(173, 111, 111);
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+a:active {
+  color: rgb(255, 255, 255);
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+
+
+

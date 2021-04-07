@@ -30,8 +30,6 @@
 <script>
 
 
-
-
 export default {
   name: 'GoogleMap',
   data() {

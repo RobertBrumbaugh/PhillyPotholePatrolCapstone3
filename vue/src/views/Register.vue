@@ -28,7 +28,7 @@
         v-model="user.password"
         required
       />
-   <!-- <br>
+   <br>
       <input
         type="password"
         id="confirmPassword"
@@ -36,7 +36,7 @@
         placeholder="Confirm Password"
         v-model="user.confirmPassword"
         required
-      /> -->
+      />
       </div>
       <br>
       <div>
@@ -111,4 +111,6 @@ button {
   display: block;
   margin: 0 auto;
   
-}</style>
+}
+
+</style>
