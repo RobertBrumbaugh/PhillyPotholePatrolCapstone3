@@ -2,8 +2,8 @@
 <div>
   <div v-for="report in reports" v-bind:key="report.report_id" class="report">
       <p>
-       Report id: {{ report.report_id }}  
-       
+       Report id: {{ report.report_id }}  Date Reported:{{ report.reported }}
+       <br>
        Current Status: {{ report.status }} 
        Change Status:
         <select name="status" id="status">
@@ -13,7 +13,7 @@
       </select>
 
       <!-- Make each of these v-model on click to the different methods -->
-
+      <br>
       Current Severity: {{ report.severity }} 
        Change Severity:
         <select name="severity" id="severity">
@@ -23,20 +23,8 @@
           <option value="4">New route advised</option>
           <option value="5">Catastrophic</option>
       </select>
-       Date Reported:{{ report.reported }}
       </p>
-     
     </div>
-
-  <!-- <form v-on:submit.prevent>
-    <div class="field">
-      <label for="title">Title</label>
-      <input type="text" v-model="report_id" />
-    </div>
-    <div class="actions">
-      <button type="submit" v-on:click="updateTopic()">Save Document</button>
-    </div>
-  </form> -->
   </div>
 </template>
 
@@ -58,6 +46,24 @@ export default {
         this.reports = response.data;
       });
     },
+  //   methods: {
+  //   updateStatus() {
+  //     reportService.updateStatus(report_id, status_id).then((response) => {
+  //       if (response.status === 200) {
+  //             this.$router.push(`/`);
+  //           }
+  //         })
+  //   },
+  //   updateInspected() {
+  //     reportService.updateInspected(report_id, inspected_date)
+  //   },
+  //   updateRepaired() {
+  //     reportService.updateRepaired(report_id, repaired_date)
+  //   }, 
+  //   updateSeverity() {
+  //     reportService.updateSeverity(report_id, severity_id)
+  //   }
+  // },
   };
 
 </script>
