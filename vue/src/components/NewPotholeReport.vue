@@ -11,21 +11,25 @@
     </div>
     
     <!-- this will probably be changed? -->
-   
+   <GoogleMap />
     <button>Save</button>
   </form>
 </template>
 
 <script>
 import ReportService from '../services/ReportService';
+import GoogleMap from '../components/GoogleMap.vue';
 export default {
     name: "new-pothole-report", 
+    components: {
+        GoogleMap
+    },
     data(){
         return {
             report: { 
                 user_id: '',
                 lat: '', 
-                long: '',
+                lng: '',
                 status: '', 
                 reported: '',
             }
@@ -38,7 +42,7 @@ export default {
                 this.report = {
                     user_id: '',
                     lat: '', 
-                    long: '',
+                    lng: '',
                     status: '', 
                     reported: ''
                 }

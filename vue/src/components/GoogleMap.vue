@@ -2,7 +2,7 @@
   <div>
     <div>
       <h2>Search and add a pin</h2>
-<GmapAutocomplete
+      <GmapAutocomplete
         @place_changed='setPlace'
       />
       <button
@@ -28,6 +28,10 @@
 </template>
 
 <script>
+
+
+
+
 export default {
   name: 'GoogleMap',
   data() {
@@ -42,7 +46,8 @@ export default {
     this.geolocate();
   },
   methods: {
-      setPlace(place) {
+
+    setPlace(place) {
       this.currentPlace = place;
     },
     addMarker() {

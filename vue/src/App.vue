@@ -5,19 +5,19 @@
       <router-link v-bind:to="{ name: 'report-list' }">Current Potholes</router-link>&nbsp;|&nbsp;
       <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
     </div>
-    <GoogleMap />
+    
     <router-view />
   </div>
 </template>
 
 <script>
 
-import GoogleMap from './components/GoogleMap.vue';
+
 
 export default {
   name: 'App',
   components: {
-    GoogleMap
+    
   }
 }
 
