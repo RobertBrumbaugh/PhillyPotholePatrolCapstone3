@@ -1,24 +1,28 @@
 <template>
-  <form class="new-pothole-report" v-on:submit.prevent="saveReport">
+  <form class="new-pothole-report" @submit.prevent="saveReport">
     <div>
-    <input class="user-input" type="text" placeholder="User" v-model="report.user" />
+    <input class="user-input" type="text" placeholder="User" v-model="report.username" />
     </div>
     <div>
-    <input class="location-input" type="text" placeholder="Location" v-model="report.location" />
+    <input class="reported-input" type="text" placeholder="Date" v-model="report.reported" />
     </div>
-    <div>
-    <input class="severity-input" type="text" placeholder="Severity" v-model="report.severity" /> 
+  <div>
+    <input class="lat-input" type="text" placeholder="Latitude" v-model="report.lat" />
+    </div>  <div>
+    <input class="lng-input" type="text" placeholder="Longitude" v-model="report.lng" />
     </div>
-    
+    <button type="submit">Save</button>
     <!-- this will probably be changed? -->
    <GoogleMap />
-    <button>Save</button>
+    
   </form>
 </template>
 
 <script>
 import ReportService from '../services/ReportService';
 import GoogleMap from '../components/GoogleMap.vue';
+
+
 export default {
     name: "new-pothole-report", 
     components: {
@@ -27,7 +31,7 @@ export default {
     data(){
         return {
             report: { 
-                user_id: '',
+                username: '',
                 lat: '', 
                 lng: '',
                 status: '', 
@@ -40,7 +44,7 @@ export default {
             ReportService.addReport(this.report).then(response => {
                 if (response.status === 201) {
                 this.report = {
-                    user_id: '',
+                    username: '',
                     lat: '', 
                     lng: '',
                     status: '', 

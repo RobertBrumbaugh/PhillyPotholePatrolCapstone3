@@ -64,7 +64,7 @@ const router = new Router({
       }
     },
     {
-      path: '/addreport',
+      path: '/reports',
       name: 'add-report',
       component: AddReport,
       meta: {
