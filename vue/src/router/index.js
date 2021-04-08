@@ -8,6 +8,7 @@ import ReportList from '../views/ReportList.vue'
 import AddReport from '../views/AddReport.vue'
 import EditReport from '../views/EditReport.vue'
 import store from '../store/index'
+import ReportDetails from '../views/ReportDetails.vue'
 
 Vue.use(Router)
 
@@ -79,15 +80,15 @@ const router = new Router({
       meta: {
         requiresAuth: true
       }
-    },
-    // {
-    //   path: '/reports/:id',
-    //   name: 'report-detail',
-    //   component: ReportDetail,
-    //   meta: {
-    //     requiresAuth: true
-    //   }
-    // }
+    },{
+      path: '/reports/:id',
+      name: 'report-details',
+      component: ReportDetails,
+      meta: {
+        requiresAuth: true
+      }
+
+    }
   ]
 })
 
