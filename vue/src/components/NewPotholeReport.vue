@@ -1,40 +1,23 @@
 <template>
   <div>
     <form class="new-pothole-report" v-on:submit.prevent>
+      <p>
+        Please drag or click on the map to mark the location of the pothole you
+        are reporting:
+      </p>
       <div>
-        <input
-          class="user-input"
-          type="text"
-          placeholder="User"
-          v-model="report.username"
-        />
+        Please rank the pothole's severity:
+        <select name="severity" id="severity" v-model="report.user_severity">
+          <option value="Minor">Minor</option>
+          <option value="Could bust a tire">Could bust a tire</option>
+          <option value="Do not drive over me">Do not drive over me</option>
+          <option value="New route advised">New route advised</option>
+          <option value="Catastrophic">Catastrophic</option>
+        </select>
       </div>
-      <div>
-        <input
-          class="reported-input"
-          type="text"
-          placeholder="Date"
-          v-model="report.reported"
-        />
-      </div>
-      <div>
-        <input
-          class="lat-input"
-          type="text"
-          placeholder="Latitude"
-          v-model="report.lat"
-        />
-      </div>
-      <div>
-        <input
-          class="lng-input"
-          type="text"
-          placeholder="Longitude"
-          v-model="report.lng"
-        />
-      </div>
+      <br />
       <button type="submit" v-on:click="saveReport">Save</button>
-      <!-- this will probably be changed? -->
+      <br />
     </form>
     <div id="map">
       <GmapMap
@@ -54,8 +37,9 @@
           @click="panToMarker"
         />
       </GmapMap>
-      <br>
-      <button @click="geolocate">Detect Location</button>
+
+      <!-- <br>
+      <button @click="geolocate">Detect Location</button> -->
 
       <p>LAT: {{ marker.position.lat }} LNG: {{ marker.position.lng }}</p>
     </div>
@@ -72,9 +56,9 @@ export default {
     return {
       report: {
         username: "",
-        lat: "",
-        lng: "",
-        status: "",
+        user_severity: "",
+        lat: 0,
+        lng: 0,
         reported: "",
       },
       marker: { position: { lat: 0, lng: 0 } },
@@ -88,15 +72,22 @@ export default {
   mounted() {
     this.geolocate();
   },
-  methods: {
+  created() {
+    // fills in current user's username on the report
+    this.report.username = this.$store.state.user.username;
 
-//detects location from browser
+    // fills in current date and time on the report
+    const date = new Date().toLocaleString();
+    this.report.reported = date;
+  },
+  methods: {
+    //detects location from browser
     geolocate() {
       navigator.geolocation.getCurrentPosition((position) => {
         this.center = {
           lat: position.coords.latitude,
           lng: position.coords.longitude,
-        }
+        };
         this.marker.position = {
           lat: position.coords.latitude,
           lng: position.coords.longitude,
@@ -108,18 +99,25 @@ export default {
     //sets the position of marker when dragged
     handleMarkerDrag(e) {
       this.marker.position = { lat: e.latLng.lat(), lng: e.latLng.lng() };
+
+      // updates current report coordinates to marker positions
+      this.report.lat = this.marker.position.lat;
+      this.report.lng = this.marker.position.lng;
     },
 
-    //Moves the map view port to marker
+    // Moves the map view port to marker
     panToMarker() {
       this.$refs.mapRef.panTo(this.marker.position);
-      this.$refs.mapRef.setZoom(18);
+      // this.$refs.mapRef.setZoom(18);
     },
 
     //Moves the marker to click position on the map
     handleMapClick(e) {
       this.marker.position = { lat: e.latLng.lat(), lng: e.latLng.lng() };
-      console.log(e);
+
+      // updates current report coordinates to marker positions
+      this.report.lat = this.marker.position.lat;
+      this.report.lng = this.marker.position.lng;
     },
 
     saveReport() {
@@ -141,14 +139,10 @@ export default {
 </script>
 
 <style>
-
 #map {
-  display:flex;
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
-
-
-
 </style>

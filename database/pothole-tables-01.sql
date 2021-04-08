@@ -32,6 +32,7 @@ CREATE TABLE reports
 	username varchar(50),
 	lat float,
 	lng float, 
+	user_severity varchar(50),
 	reported varchar(32),
 	inspected varchar(32),
 	repaired varchar(32),
@@ -82,10 +83,10 @@ INSERT INTO status_types (status_id, status_desc)
         (2, 'inspected'),
         (3, 'repaired');
         
-INSERT INTO reports (username, lat, lng, reported, status) 
+INSERT INTO reports (username, lat, lng, user_severity, reported, status) 
         VALUES 
-        ( 'user', 39.952778, -75.163611, '2021-4-5', 1),
-        ( 'user', 39.972778, -75.131611, '2021-4-6', 1);
+        ( 'user', 39.952778, -75.163611, 'Minor', '2021-4-5', 1),
+        ( 'user', 39.972778, -75.131611, 'Could bust a tire', '2021-4-6', 1);
         
 
 GRANT ALL

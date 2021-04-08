@@ -11,8 +11,13 @@
       
       <div id="report-box">
         <p>
-       Report id: {{ report.report_id }}  Username: {{ report.username }} Latitude: {{ report.lat }} Longitude: {{report.lng}}
-       Severity: {{report.severity}} Status: {{ report.status }} Date Reported:{{ report.reported }}
+       <strong>Date Reported:</strong> {{ report.reported }} <strong>Username:</strong> {{ report.username }}
+       <br>
+       <strong>Report ID:</strong> {{ report.report_id }} <strong>Status:</strong> {{ report.status }} 
+       <br>
+       <strong>Latitude:</strong> {{ report.lat }} <strong>Longitude:</strong> {{report.lng}}
+       <br>
+       <strong>Reported Severity:</strong> "{{report.user_severity}}" <strong>Official Severity Code:</strong> {{report.severity}} 
       </p>
       </div>
       

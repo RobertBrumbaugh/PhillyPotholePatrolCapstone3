@@ -10,6 +10,7 @@ public class Report {
 	private String username;
 	private BigDecimal lat;
 	private BigDecimal lng;
+	private String user_severity;
 	private String reported;
 	private String inspected;
 	private String repaired;
@@ -17,8 +18,8 @@ public class Report {
 	private int severity;
 	private String img;
 	
-	// Getters and Setters
 	
+	// Getters and Setters
 	
 	public int getReport_id() {
 		return report_id;
@@ -43,6 +44,12 @@ public class Report {
 	}
 	public void setLng(BigDecimal lng) {
 		this.lng = lng;
+	}
+	public String getUser_severity() {
+		return user_severity;
+	}
+	public void setUser_severity(String user_severity) {
+		this.user_severity = user_severity;
 	}
 	public String getReported() {
 		return reported;
@@ -81,15 +88,6 @@ public class Report {
 		this.img = img;
 	}
 	
-	
 
-	
-	
-	
-	
-
-	
-	
-	
 	
 }
