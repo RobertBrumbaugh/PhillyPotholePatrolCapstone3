@@ -23,6 +23,8 @@
           <option value="4">New route advised</option>
           <option value="5">Catastrophic</option>
       </select>
+       <a href="#" v-on:click="deleteReport(report.report_id)">Delete</a>
+
       </p>
     </div>
   </div>
@@ -46,24 +48,27 @@ export default {
         this.reports = response.data;
       });
     },
-  //   methods: {
-  //   updateStatus() {
-  //     reportService.updateStatus(report_id, status_id).then((response) => {
-  //       if (response.status === 200) {
-  //             this.$router.push(`/`);
-  //           }
-  //         })
-  //   },
-  //   updateInspected() {
-  //     reportService.updateInspected(report_id, inspected_date)
-  //   },
-  //   updateRepaired() {
-  //     reportService.updateRepaired(report_id, repaired_date)
-  //   }, 
-  //   updateSeverity() {
-  //     reportService.updateSeverity(report_id, severity_id)
-  //   }
-  // },
+    methods: {
+    // updateStatus() {
+    //   reportService.updateStatus(report_id, status_id).then((response) => {
+    //     if (response.status === 200) {
+    //           this.$router.push(`/`);
+    //         }
+    //       })
+    // },
+    // updateInspected() {
+    //   reportService.updateInspected(report_id, inspected_date)
+    // },
+    // updateRepaired() {
+    //   reportService.updateRepaired(report_id, repaired_date)
+    // }, 
+    // updateSeverity() {
+    //   reportService.updateSeverity(report_id, severity_id)
+    // },
+    // deleteReport() {
+    //   reportService.deleteReport(report_id)
+    // }
+  },
   };
 
 </script>
