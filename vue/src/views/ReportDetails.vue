@@ -1,6 +1,6 @@
 <template>
-  <div>
-      <h3> {{report.username}} {{report.report_id}} {{report.reported}}</h3>
+  <div id ="map">
+      <h3> Reported By: {{report.username}} Id: {{report.report_id}} Date: {{report.reported}} Severity: {{report.user_severity}} </h3>
       <div>
       <GmapMap
         :center="center"
@@ -98,5 +98,13 @@ export default {
 </script>
 
 <style>
+
+#map {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 
 </style>

@@ -1,9 +1,10 @@
 <template
 >
   <div class="home">
-    
-    <h1>Welcome to Pothole Patrol</h1>
+    <router-link v-bind:to="{ name: 'edit-report' }" v-if="role == 'ROLE_EMPLOYEE'"> <h1>Employee Portal</h1> </router-link>
+    <h1 v-else>Welcome to Pothole Patrol</h1>
     <p id="greetings">Greetings {{username}} !!</p>
+     <br>
     <img src="@/assets/PotholeLogo.png">
   </div>
 </template>
@@ -13,11 +14,13 @@ export default {
   name: "home",
   data() {
     return {
-      username: ""
+      username: "",
+      role: ""
     }
   },
   mounted() {
     this.username= this.$store.state.user.username;
+    this.role = this.$store.state.user.authorities[0].name
   }
 };
 </script>
