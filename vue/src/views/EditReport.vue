@@ -1,5 +1,38 @@
 <template>
 <div id ="map">
+
+   <p>
+       Report id: {{ report.report_id }}  Date Reported:{{ report.reported }}
+       <br>
+       Current Status: {{ report.status }} 
+       Change Status:
+        <select name="status" id="status">
+          <option value="1">Reported</option>
+          <option value="2">Inspected</option>
+          <option value="3">Repaired</option>
+      </select>
+
+      Schedule for inspection:
+      <input type="date" />
+
+      Schedule for inspection:
+      <input type="date" />
+
+      <!-- Make each of these v-model on click to the different methods -->
+      <br>
+      Current Severity: {{ report.severity }} 
+       Change Severity:
+        <select name="severity" id="severity">
+          <option value="1">Minor</option>
+          <option value="2">Could bust a tire</option>
+          <option value="3">Do not drive over me</option>
+          <option value="4">New route advised</option>
+          <option value="5">Catastrophic</option>
+      </select>
+       <button id="delete" v-on:click.prevent="deleteReport(report.report_id)">Delete</button>
+
+      </p>
+
       <h3> Reported By: {{report.username}} Id: {{report.report_id}} Date: {{report.reported}} Severity: {{report.user_severity}} </h3>
       <div>
       <GmapMap
@@ -29,6 +62,7 @@
 import ReportService from "../services/ReportService"
 
 export default {
+  name: 'edit-report',
 data() {
     return {
       center: {lat: 0, lng: 0},
@@ -90,6 +124,29 @@ data() {
       this.marker.position = { lat: e.latLng.lat(), lng: e.latLng.lng() };
       console.log(e);
     },
+    // updateStatus() {
+    //   reportService.updateStatus(report_id, status_id).then((response) => {
+    //     if (response.status === 200) {
+    //           this.$router.push(`/`);
+    //         }
+    //       })
+    // },
+    // updateInspected() {
+    //   reportService.updateInspected(report_id, inspected_date)
+    // },
+    // updateRepaired() {
+    //   reportService.updateRepaired(report_id, repaired_date)
+    // }, 
+    // updateSeverity() {
+    //   reportService.updateSeverity(report_id, severity_id)
+    // },
+    deleteReport() {
+      ReportService.deleteReport(this.report.report_id).then((response) => {
+        if (response.status === 204) {
+          this.$router.push( { name: 'report-list'} )
+        }
+      })
+    }
   }
 
 };
