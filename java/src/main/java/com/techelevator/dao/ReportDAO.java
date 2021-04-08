@@ -10,6 +10,12 @@ public interface ReportDAO {
 	
 	public void addReport(Report report);
 	
+	public void deleteReportByReportId(int report_id);
+	
+	public void updateReport(Report report);
+	
+	// single field update methods?? 
+	
 	public void updateStatusByReportId(int report_id, int status_id);
 	
 	public void updateSeverityByReportId(int report_id, int severity_id);
@@ -18,6 +24,6 @@ public interface ReportDAO {
 	
 	public void updateRepairedByReportId(int report_id, String repaired_date);
 	
-	public void deleteReportByReportId(int report_id);
+	
 	
 }

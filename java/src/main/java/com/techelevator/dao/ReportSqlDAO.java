@@ -53,7 +53,18 @@ public class ReportSqlDAO implements ReportDAO {
 		jdbcTemplate.update(sql, report_id);
 
 	}
-
+	
+	@Override
+	public void updateReport(Report report) {
+		
+		String sql = "UPDATE reports SET inspected = ?, repaired = ?, "
+					+ "status = ?, severity = ? WHERE report_id = ?";
+		jdbcTemplate.update(sql, report.getInspected(), report.getRepaired(),
+				report.getStatus(), report.getSeverity(), report.getReport_id());
+		
+	}
+	
+	
 	@Override
 	public void updateStatusByReportId(int report_id, int status_id) {
 
@@ -99,5 +110,7 @@ public class ReportSqlDAO implements ReportDAO {
 		report.setImg(rs.getString("img"));
 		return report;
 	}
+
+
 
 }

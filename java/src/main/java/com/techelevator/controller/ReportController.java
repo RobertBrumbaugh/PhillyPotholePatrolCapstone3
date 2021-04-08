@@ -52,6 +52,16 @@ public class ReportController {
 		ReportSqlDAO.deleteReportByReportId(report_id);
 	}
 	
+	@RequestMapping(path = "/reports", method = RequestMethod.PUT)
+	public void updateReport(@RequestBody Report report) {
+		ReportSqlDAO.updateReport(report);
+	}
+	
+	
+	
+	
+	
+	
 //	@PreAuthorize("isAuthenticated()")
 	@RequestMapping(path = "/reports/{report_id}/status/{status_id}", method = RequestMethod.PUT)
 	public void updateStatus(@PathVariable int report_id, @PathVariable int status_id) {
