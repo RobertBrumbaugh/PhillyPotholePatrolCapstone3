@@ -65,7 +65,7 @@ const router = new Router({
       }
     },
     {
-      path: '/reports',
+      path: '/reports/add',
       name: 'add-report',
       component: AddReport,
       meta: {
@@ -73,13 +73,21 @@ const router = new Router({
       }
     },
     {
-      path: '/reports',
+      path: '/reports/edit',
       name: 'edit-report',
       component: EditReport,
       meta: {
         requiresAuth: true
       }
     },
+    // {
+    //   path: '/reports/:id',
+    //   name: 'report-detail',
+    //   component: ReportDetail,
+    //   meta: {
+    //     requiresAuth: true
+    //   }
+    // }
   ]
 })
 

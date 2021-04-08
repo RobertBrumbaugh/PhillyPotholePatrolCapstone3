@@ -36,7 +36,7 @@
       <button type="submit" v-on:click="saveReport">Save</button>
       <!-- this will probably be changed? -->
     </form>
-    <div>
+    <div id="map">
       <GmapMap
         :center="center"
         :zoom="18"
@@ -54,6 +54,7 @@
           @click="panToMarker"
         />
       </GmapMap>
+      <br>
       <button @click="geolocate">Detect Location</button>
 
       <p>LAT: {{ marker.position.lat }} LNG: {{ marker.position.lng }}</p>
@@ -140,4 +141,14 @@ export default {
 </script>
 
 <style>
+
+#map {
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
 </style>

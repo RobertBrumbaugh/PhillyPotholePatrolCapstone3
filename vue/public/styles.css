@@ -1,5 +1,6 @@
 body{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
@@ -17,7 +18,7 @@ body{
     background: #2b2a2ad8;
     color: white;
     padding: 1em;
-    border-radius: 30px;
+    border-radius: 10px;
     width: 100%;
     width: 70vw;
     height: 90vh;
@@ -49,6 +50,24 @@ a:active {
   text-decoration: underline;
 }
 
+::-webkit-scrollbar {
+  width: 20px;
+}
 
+::-webkit-scrollbar-track {
+  background-color: transparent;
+  padding: 15px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgb(106, 176, 185);
+  border-radius: 20px;
+  border: 6px solid transparent;
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #6ba5a0;
+}
 
 

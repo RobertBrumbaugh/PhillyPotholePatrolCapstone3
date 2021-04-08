@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div>
+    <div id="map">
       <h2>Search and add a pin</h2>
       <GmapAutocomplete
         @place_changed='setPlace'
@@ -71,3 +71,15 @@ export default {
   },
 };
 </script>
+
+<style>
+
+#map {
+  display: flex;
+  align-content: center;
+  justify-items: center;
+}
+
+
+
+</style>
