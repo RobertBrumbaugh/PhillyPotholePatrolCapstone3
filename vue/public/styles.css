@@ -1,97 +1,174 @@
 body{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    /* background: rgb(125, 214, 195); */
-    background: rgb(71,193,185);
-    background: linear-gradient(180deg, rgba(71,193,185,1) 25%, rgba(127,214,193,1) 44%, rgba(65,187,172,1) 70%);
-    font-family: 'Open Sans', sans-serif;
-    /* background-image: url('https://images.unsplash.com/photo-1569761316261-9a8696fa2ca3?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'); 
-    background-repeat: no-repeat;
-    background-size: 120%;  */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background: rgb(71,193,185);
+  background: linear-gradient(180deg, rgba(71,193,185,1) 25%, rgba(127,214,193,1) 44%, rgba(65,187,172,1) 70%);
+  font-family: 'Work Sans', sans-serif;
+  overflow:auto;
+
 }
 
 #app {
-    background: #2b2a2ad8;
-    color: white;
-    padding: 1em;
-    border-radius: 10px;
-    width: 100%;
-    width: 70vw;
-    height: 90vh;
-    overflow: auto;
+  background: #2b2a2ad8;
+  color: white;
+  /* padding: .5em; */
+  /* border-radius: 10px; */
+  width: 100%;
+  width: 70vw;
+  height: 85vh;
+  overflow: auto;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.50);
 }
 
 a:link {
-  color: rgb(106, 176, 185);
-  background-color: transparent;
-  text-decoration: none;
+color: rgb(106, 176, 185);
+background-color: transparent;
+text-decoration: none;
 }
 
 a:visited {
-  color: pink;
-  background-color: transparent;
-  text-decoration: none;
-  
-}
+color: rgb(255, 255, 255);
+background-color: transparent;
+text-decoration: none;
 
+}
 a:hover {
-  color: rgb(173, 111, 111);
-  background-color: transparent;
-  text-decoration: underline;
+color: rgb(173, 111, 111);
+background-color: transparent;
 }
 
 a:active {
-  color: rgb(255, 255, 255);
-  background-color: transparent;
-  text-decoration: underline;
+color: rgb(255, 255, 255);
+background-color: transparent;
+
 }
 
 ::-webkit-scrollbar {
-  width: 20px;
+width: 0px;
+overflow-x: hidden;
+overflow-y: scroll;
 }
 
-::-webkit-scrollbar-track {
-  background-color: transparent;
-  padding: 15px;
+/* ::-webkit-scrollbar-track {
+background-color: transparent;
+padding: 20px;
 }
-
 ::-webkit-scrollbar-thumb {
-  background-color: rgb(106, 176, 185);
-  border-radius: 20px;
-  border: 6px solid transparent;
-  background-clip: content-box;
-}
+background-color: rgb(106, 176, 185);
+border-radius: 20px;
+border: 6px solid transparent;
+background-clip: content-box;
 
+}
 ::-webkit-scrollbar-thumb:hover {
-  background-color: #6ba5a0;
+background-color: #6ba5a0;
+} */
+
+
+.styled-table {
+border-collapse: collapse;
+margin: 20px 0;
+font-weight: 600;
+font-size: 20px ;
+background-color:rgb(185, 185, 185); 
+color: black;
+/* font-family: 'Courier New', Courier, monospace; */
+width: 100%;
+box-shadow: 0 0 20px rgba(0, 0, 0, 0.50);
+text-align: left;
+}
+
+.styled-table tr {
+background-color: rgb(255, 255, 255);
+color: black;
+text-align: left;
+font-family: Arial, Helvetica, sans-serif;
+font-weight: 200px;
+}
+
+.styled-table th,
+.styled-table td {
+padding: 12px 15px;
+
 }
 
 
-table {
-  text-align: left;
-  border-collapse: collapse;
-    margin: 25px 0;
-    font-size: 0.9em;
-    font-family: sans-serif;
-    min-width: 400px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-    width: 100%
-    
+ul {
+list-style-type: none;
+margin: 0;
+padding: 0;
+overflow: hidden;
+background-color: rgb(71,193,185);
+font-family: 'Work Sans', sans-serif;
+box-shadow: 0 0 20px rgba(0, 0, 0, 0.50);
 }
 
-td, tr {
-  padding: 12px 15px;
+li {
+float: left;
 }
 
-tr {
-  border-bottom: 1px solid #dddddd
+li a {
+display: block;
+color: white;
+text-align: center;
+padding: 14px 16px;
+text-decoration: none;
 }
 
-tr:nth-child(even) {
-  background-color: #9b9494;
-  border-bottom: 2px solid #373f3d
+li a:hover {
+/* background-color: rgb(170, 167, 167); */
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.50);
+text-decoration: none;
+}
+
+footer {
+width: 100%;
+text-align: center;
+padding: 10px;
+color: white;
+}
+
+.header-img {
+width: 70vw;
+height: 100px;
+background: url('http://www.mccworldinternational.com/wp-content/themes/mcc-world/images/contact_us.jpg');
+background-size:cover;
+position: relative;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.50);
+
+}
+
+#user-report-table {
+font-size: 20px;
+}
+
+#user-details-table {
+border-collapse: collapse;
+margin: 20px 0;
+font-weight: 600;
+font-size: 16px ;
+background-color:rgb(185, 185, 185); 
+color: black;
+width: 65%;
+box-shadow: 0 0 20px rgba(0, 0, 0, 0.50);
+text-align: left;
+align-items: center;
+}
+
+#user-details-table tr {
+background-color: rgb(255, 255, 255);
+color: black;
+text-align: left;
+font-family: Arial, Helvetica, sans-serif;
+font-weight: 200px;
+}
+
+#user-details-table th,
+#user-details-table td {
+padding: 8px 10px;
+
 }

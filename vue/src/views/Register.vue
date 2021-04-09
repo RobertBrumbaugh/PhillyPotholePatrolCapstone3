@@ -6,7 +6,7 @@
         {{ registrationErrorMsg }}
       </div>
       <div>
-      <label for="username" class="sr-only">Username: </label>
+      <label for="username" class="sr-only">Username: </label><br>
       <input
         type="text"
         id="username"
@@ -20,6 +20,7 @@
       <br>
       <div>
       <label for="password" class="sr-only">Password: </label>
+      <br>
       <input
         type="password"
         id="password"
@@ -28,7 +29,7 @@
         v-model="user.password"
         required
       />
-   <br>
+      <br>
       <input
         type="password"
         id="confirmPassword"
@@ -103,14 +104,21 @@ export default {
 <style>
 
 button {
-  width: 100px;
+  width: 130px;
   background-color: white;
   border: none;
   border-radius: 10px;
   font-size: 14px;
   display: block;
   margin: 0 auto;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.50);
   
+}
+
+input {
+  display: inline-flex;
+  margin: 5px;
+
 }
 
 </style>
