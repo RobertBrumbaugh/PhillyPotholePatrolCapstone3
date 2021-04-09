@@ -17,6 +17,7 @@
             <td>{{ report.reported }} </td>
             <td>Zip Code: </td>
             <td></td>
+            <!-- <td> {{returnLocation(report)}} </td> -->
               <td>User Severity:</td>
             <td>{{ report.user_severity}} </td>
             <td>Reported By: </td>
@@ -101,7 +102,9 @@
           </tr>
           <tr>
             <td>Zip Code: </td>
-            <td></td>
+            <!-- ZIP CODE API CALL -->
+            <!-- <td> {{ returnLocation(report) }} </td> -->
+            <td> </td>
             <td>Official Severity Code: </td>
             <td>{{ report.severity }}</td>
        
@@ -135,6 +138,7 @@
 
 <script>
 import reportService from "../services/ReportService.js";
+// import Vue from 'vue';
 
 export default {
   name: "report-list",
@@ -154,6 +158,15 @@ export default {
     this.role = this.$store.state.user.authorities[0].name
   },
   methods: {
+//     returnLocation(report) {
+//     var latLngObj = {
+//     lat: report.lat,
+//     lng: report.lng
+// }
+// Vue.$geocoder.send(latLngObj).then( response => {
+//       return response });
+//     },
+
     reportStatus(report) {
       if (report.status === 1) {
         return "Reported";
