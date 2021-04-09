@@ -10,14 +10,16 @@ export default {
         return axios.get('/reports');
     },
 
-    // I think we need to add a get id method
-
     addReport(report) {
       return axios.post('/reports', report);
     },
 
     deleteReport(report_id) {
       return axios.delete(`/reports/${report_id}`)
+    },
+
+    updateReport(report) {
+      return axios.put('/reports', report);
     },
     
     updateStatus(report_id, status_id) {

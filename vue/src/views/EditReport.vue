@@ -5,34 +5,34 @@
        Report id: {{ report.report_id }}  Date Reported:{{ report.reported }}
        <br>
        Current Status: {{ report.status }} 
+       <br>
        Change Status:
-        <select name="status" id="status">
+        <select name="status" id="status" v-model="report.status">
           <option value="1">Reported</option>
           <option value="2">Inspected</option>
           <option value="3">Repaired</option>
       </select>
-
+<br>
       Schedule for inspection:
-      <input type="date" />
-
-      Schedule for inspection:
-      <input type="date" />
-
+      <input type="date" v-model="report.inspected"/>
+<br>
+      Schedule for repair:
+      <input type="date" v-model="report.repaired"/>
+<br>
       <!-- Make each of these v-model on click to the different methods -->
       <br>
       Current Severity: {{ report.severity }} 
+      <br>
        Change Severity:
-        <select name="severity" id="severity">
-          <option value="1">Minor</option>
-          <option value="2">Could bust a tire</option>
-          <option value="3">Do not drive over me</option>
-          <option value="4">New route advised</option>
-          <option value="5">Catastrophic</option>
+        <select name="severity" id="severity" v-model="report.severity">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
       </select>
        <button id="delete" v-on:click.prevent="deleteReport(report.report_id)">Delete</button>
-
+       <button id="update" v-on:click.prevent="updateReport(report)">Update</button> 
       </p>
-
+<br>
       <h3> Reported By: {{report.username}} Id: {{report.report_id}} Date: {{report.reported}} Severity: {{report.user_severity}} </h3>
       <div>
       <GmapMap
@@ -144,6 +144,13 @@ data() {
       ReportService.deleteReport(this.report.report_id).then((response) => {
         if (response.status === 204) {
           this.$router.push( { name: 'report-list'} )
+        }
+      })
+    },
+    updateReport() {
+      ReportService.updateReport(this.report).then( (response) => {
+        if (response.status === 200) {
+          this.$router.push( {name: 'report-list'} )
         }
       })
     }
