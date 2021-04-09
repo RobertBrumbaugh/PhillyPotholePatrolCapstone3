@@ -1,6 +1,42 @@
 <template>
   <div id ="map">
-      <h3> Reported By: {{report.username}} Id: {{report.report_id}} Date: {{report.reported}} Severity: {{report.user_severity}} </h3>
+      <table id="user-report-table">
+          <tr>
+            <td>User Severity: </td>
+            <td>{{ report.user_severity}} </td>
+            <td>Reported By: </td>
+            <td>{{ report.username }}</td>
+            <td>Date Reported: </td>
+            <td>{{ report.reported }} </td>
+
+          </tr>
+          <tr>
+            <td>Zip Code: </td>
+            <td></td>
+            <td>Date Inspected: </td>
+            <td>{{ report.inspected }} </td>
+            <td>Date Repaired: </td>
+            <td>{{ report.repaired }} </td>
+       
+          </tr>
+          <tr>            
+
+            <td>Offical Status Code: </td>
+            <td>{{ report.status}} </td>            
+            <td>Official Severity Code: </td>
+            <td>{{ report.severity }}</td>
+          </tr>
+          <tr>
+    
+          </tr>
+
+          <tr>
+            <!-- <td>Geolocation:  </td>
+            <td>Math.round({{ report.lat }}) Math.round({{ report.lng }})</td> -->
+          </tr>
+
+        </table>
+
       <div>
       <GmapMap
         :center="center"
