@@ -92,6 +92,30 @@ export default {
       this.marker.position = { lat: e.latLng.lat(), lng: e.latLng.lng() };
       console.log(e);
     },
+    reportStatus(report) {
+      if (report.status === 1) {
+        return "Reported";
+      }
+      else if (report.status === 2) {
+        return "Inspected"
+      } else if (report.status === 3) {
+        return "Repaired"
+      }
+    },
+    reportSeverity(report) {
+      if (report.severity === 0) {
+        return "TBD"
+      } 
+      else if (report.severity === 1) {
+        return "Minor"
+      }
+      else if (report.severity === 2) {
+        return "Average"
+      }
+      else if (report.severity === 3) {
+        return "Major"
+      }
+    },
   }
 
 }

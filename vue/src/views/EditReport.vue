@@ -4,32 +4,34 @@
    <p>
        Report id: {{ report.report_id }}  Date Reported:{{ report.reported }}
        <br>
-       Current Status: {{ report.status }} 
+       Current Status Code: {{ report.status }} 
        <br>
-       Change Status:
+       <label for="status">Change Status:</label> 
         <select name="status" id="status" v-model="report.status">
           <option value="1">Reported</option>
           <option value="2">Inspected</option>
           <option value="3">Repaired</option>
       </select>
 <br>
-      Schedule for inspection:
-      <input type="date" v-model="report.inspected"/>
+      <label for="inspected">Schedule for inspection:</label>
+      <input name="inspected" type="date" v-model="report.inspected"/>
 <br>
-      Schedule for repair:
-      <input type="date" v-model="report.repaired"/>
+      <label for="repaired">Schedule for repair:</label>
+      <input name="repaired" type="date" v-model="report.repaired"/>
 <br>
       <!-- Make each of these v-model on click to the different methods -->
       <br>
-      Current Severity: {{ report.severity }} 
-      <br>
-       Change Severity:
+      Current Severity Code: {{ report.severity }} 
+      <br> 
+      <label for="severity">Change Severity:</label>
         <select name="severity" id="severity" v-model="report.severity">
+          <option value="0">0</option>
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
       </select>
        <button id="delete" v-on:click.prevent="deleteReport(report.report_id)">Delete</button>
+       <br>
        <button id="update" v-on:click.prevent="updateReport(report)">Update</button> 
       </p>
 <br>
@@ -95,9 +97,8 @@ data() {
       // find current report with route param id 
       this.report = this.reports.find( report => {
           return report.report_id == this.$route.params.id;
-          
       })
-      
+
       // set marker to report lat/lng
       this.marker.position.lat = this.report.lat;
       this.marker.position.lng = this.report.lng;
@@ -108,6 +109,47 @@ data() {
     });
   },
   methods: {
+    deleteReport() {
+      let confirmDelete = confirm("Please confirm delete");
+      if (confirmDelete == true) {
+      ReportService.deleteReport(this.report.report_id).then((response) => {
+        if (response.status === 204) {
+          this.$router.push( { name: 'report-list'} )
+        }
+      })
+  }   
+    },
+    updateReport() {
+      ReportService.updateReport(this.report).then( (response) => {
+        if (response.status === 200) {
+          this.$router.push( {name: 'report-list'} )
+        }
+      })
+    },
+    reportStatus(report) {
+      if (report.status === 1) {
+        return "Reported";
+      }
+      else if (report.status === 2) {
+        return "Inspected"
+      } else if (report.status === 3) {
+        return "Repaired"
+      }
+    },
+    reportSeverity(report) {
+      if (report.severity === 0) {
+        return "TBD"
+      } 
+      else if (report.severity === 1) {
+        return "Minor"
+      }
+      else if (report.severity === 2) {
+        return "Average"
+      }
+      else if (report.severity === 3) {
+        return "Major"
+      }
+    },
       //sets the position of marker when dragged
     handleMarkerDrag(e) {
       this.marker.position = { lat: e.latLng.lat(), lng: e.latLng.lng() };
@@ -140,20 +182,6 @@ data() {
     // updateSeverity() {
     //   reportService.updateSeverity(report_id, severity_id)
     // },
-    deleteReport() {
-      ReportService.deleteReport(this.report.report_id).then((response) => {
-        if (response.status === 204) {
-          this.$router.push( { name: 'report-list'} )
-        }
-      })
-    },
-    updateReport() {
-      ReportService.updateReport(this.report).then( (response) => {
-        if (response.status === 200) {
-          this.$router.push( {name: 'report-list'} )
-        }
-      })
-    }
   }
 
 };

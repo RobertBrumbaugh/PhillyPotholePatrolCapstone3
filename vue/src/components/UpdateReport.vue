@@ -1,6 +1,6 @@
 <template>
 <div>
-  <div v-for="report in reports" v-bind:key="report.report_id" class="report">
+  <!-- <div v-for="report in reports" v-bind:key="report.report_id" class="report">
       <p>
        Report id: {{ report.report_id }}  Date Reported:{{ report.reported }}
        <br>
@@ -12,7 +12,6 @@
           <option value="3">Repaired</option>
       </select>
 
-      <!-- Make each of these v-model on click to the different methods -->
       <br>
       Current Severity: {{ report.severity }} 
        Change Severity:
@@ -26,7 +25,7 @@
        <a href="#" v-on:click="deleteReport(report.report_id)">Delete</a>
 
       </p>
-    </div>
+    </div> -->
   </div>
 </template>
 

@@ -5,8 +5,8 @@
         Please drag or click on the map to mark the location of the pothole you
         are reporting:
       </p>
-      <div>
-        Please rank the pothole's severity:
+      <div> 
+        <label for="severity">Please rank the pothole's severity:</label>
         <select name="severity" id="severity" v-model="report.user_severity">
           <option value="Minor">Minor</option>
           <option value="Could bust a tire">Could bust a tire</option>
@@ -81,6 +81,21 @@ export default {
     this.report.reported = date;
   },
   methods: {
+    saveReport() {
+      ReportService.addReport(this.report).then((response) => {
+        if (response.status === 201) {
+          this.report = {
+            username: "",
+            lat: "",
+            lng: "",
+            status: "",
+            reported: "",
+          };
+          this.$router.push("/reports");
+        }
+      });
+    },
+
     //detects location from browser
     geolocate() {
       navigator.geolocation.getCurrentPosition((position) => {
@@ -118,21 +133,6 @@ export default {
       // updates current report coordinates to marker positions
       this.report.lat = this.marker.position.lat;
       this.report.lng = this.marker.position.lng;
-    },
-
-    saveReport() {
-      ReportService.addReport(this.report).then((response) => {
-        if (response.status === 201) {
-          this.report = {
-            username: "",
-            lat: "",
-            lng: "",
-            status: "",
-            reported: "",
-          };
-          this.$router.push("/reports");
-        }
-      });
     },
   },
 };

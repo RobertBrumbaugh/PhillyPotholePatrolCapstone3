@@ -14,11 +14,11 @@
         <p>
        <strong>Date Reported:</strong> {{ report.reported }} <strong>Username:</strong> {{ report.username }}
        <br>
-       <strong>Report ID:</strong> {{ report.report_id }} <strong>Status:</strong> {{ report.status }} 
+       <strong>Report ID:</strong> {{ report.report_id }} <strong>Status:</strong> {{ reportStatus(report) }} 
        <br>
        <strong>Latitude:</strong> {{ report.lat }} <strong>Longitude:</strong> {{report.lng}}
        <br>
-       <strong>Reported Severity:</strong> "{{report.user_severity}}" <strong>Official Severity Code:</strong> {{report.severity}} 
+       <strong>Reported Severity:</strong> "{{report.user_severity}}" <strong>Official Severity Code:</strong> {{ reportSeverity(report) }} 
       </p>
       </div>
       
@@ -38,11 +38,11 @@
         <p>
        <strong>Date Reported:</strong> {{ report.reported }} <strong>Username:</strong> {{ report.username }}
        <br>
-       <strong>Report ID:</strong> {{ report.report_id }} <strong>Status:</strong> {{ report.status }} 
+       <strong>Report ID:</strong> {{ report.report_id }} <strong>Status:</strong> {{ reportStatus(report) }} 
        <br>
        <strong>Latitude:</strong> {{ report.lat }} <strong>Longitude:</strong> {{report.lng}}
        <br>
-       <strong>Reported Severity:</strong> "{{report.user_severity}}" <strong>Official Severity Code:</strong> {{report.severity}} 
+       <strong>Reported Severity:</strong> "{{report.user_severity}}" <strong>Official Severity Code:</strong> {{ reportSeverity(report) }} 
       </p>
       </div>
       
@@ -73,6 +73,32 @@ export default {
   mounted() {
     this.username= this.$store.state.user.username;
     this.role = this.$store.state.user.authorities[0].name
+  },
+  methods: {
+    reportStatus(report) {
+      if (report.status === 1) {
+        return "Reported";
+      }
+      else if (report.status === 2) {
+        return "Inspected"
+      } else if (report.status === 3) {
+        return "Repaired"
+      }
+    },
+    reportSeverity(report) {
+      if (report.severity === 0) {
+        return "TBD"
+      } 
+      else if (report.severity === 1) {
+        return "Minor"
+      }
+      else if (report.severity === 2) {
+        return "Average"
+      }
+      else if (report.severity === 3) {
+        return "Major"
+      }
+    },
   }
 };
 </script>
