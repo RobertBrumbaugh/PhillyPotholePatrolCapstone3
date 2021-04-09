@@ -23,7 +23,7 @@ CREATE TABLE users (
 	CONSTRAINT PK_user PRIMARY KEY (username)
 );
 
-INSERT INTO users (username,password_hash,role) VALUES ('user','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
+INSERT INTO users (username,password_hash,role) VALUES ('JohnnyQPublic','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
 INSERT INTO users (username,password_hash,role) VALUES ('admin','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_ADMIN');
 INSERT INTO users (username,password_hash,role) VALUES ('employee','$2a$10$EwiZHu3h.v1KmhrCpNloEOSPlvK3fKCwehl1uHgoWh7vfsDriAFR.','ROLE_EMPLOYEE');
 
@@ -74,6 +74,7 @@ ADD CONSTRAINT
         
 INSERT INTO severity_types (severity_id, severity_desc) 
         VALUES 
+        (0, 'TBD'),
         (1, 'minor'), 
         (2, 'average'), 
         (3, 'major');
@@ -84,10 +85,10 @@ INSERT INTO status_types (status_id, status_desc)
         (2, 'inspected'),
         (3, 'repaired');
         
-INSERT INTO reports (username, lat, lng, user_severity, reported, status) 
+INSERT INTO reports (username, lat, lng, user_severity, reported, status, severity) 
         VALUES 
-        ( 'user', 39.952778, -75.163611, 'Minor', '2021-4-5', 1),
-        ( 'user', 39.972778, -75.131611, 'Could bust a tire', '2021-4-6', 1);
+        ( 'JohnnyQPublic', 39.95277884627590, -75.16361112345678, 'Minor', '4/5/2021, 9:03:20 AM', 1, 0),
+        ( 'JohnnyQPublic', 39.97277804978631, -75.13161109876543, 'Could bust a tire', '4/6/2021, 5:13:20 PM', 1, 0);
         
 
 GRANT ALL
