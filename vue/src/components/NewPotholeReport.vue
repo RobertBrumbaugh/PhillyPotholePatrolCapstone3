@@ -78,12 +78,14 @@ export default {
     // fills in current user's username on the report
     this.report.username = this.$store.state.user.username;
 
-    // fills in current date and time on the report
-    const date = new Date().toLocaleString();
-    this.report.reported = date;
   },
   methods: {
      saveReport() {
+       
+// fills in current date and time on the report
+    const date = new Date().toLocaleString();
+    this.report.reported = date;
+
         ReportService.addReport(this.report).then((response) => {
         if (response.status === 201) {
           this.report = {
