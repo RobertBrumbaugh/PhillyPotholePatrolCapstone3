@@ -40,14 +40,16 @@
 
       <!-- <br>
       <button @click="geolocate">Detect Location</button> -->
-
+      <p>Nearest Address to Pin: {{ this.report.location }}</p>
       <p>LAT: {{ marker.position.lat }} LNG: {{ marker.position.lng }}</p>
+      
     </div>
   </div>
 </template>
 
 <script>
 import ReportService from "../services/ReportService";
+import Vue from 'vue';
 
 export default {
   name: "new-pothole-report",
@@ -59,11 +61,11 @@ export default {
         user_severity: "",
         lat: 0,
         lng: 0,
+        location: "",
         reported: "",
       },
       marker: { position: { lat: 0, lng: 0 } },
       center: { lat: 0, lng: 0 },
-
       mapOptions: {
         disableDefaultUI: false,
       },
@@ -81,19 +83,27 @@ export default {
     this.report.reported = date;
   },
   methods: {
-    saveReport() {
-      ReportService.addReport(this.report).then((response) => {
+     saveReport() {
+        ReportService.addReport(this.report).then((response) => {
         if (response.status === 201) {
           this.report = {
             username: "",
             lat: "",
             lng: "",
+            location: "",
             status: "",
             reported: "",
           };
           this.$router.push("/reports");
         }
       });
+    },
+
+    // sets report.location to current lat/lng by making API call
+    getLocation() {
+      Vue.$geocoder.send({lat: this.report.lat, lng: this.report.lng}, response => {
+        this.report.location = String(response.results[0].formatted_address);
+      })
     },
 
     //detects location from browser
@@ -108,9 +118,14 @@ export default {
           lng: position.coords.longitude,
         };
 
+        // updates current report coordinates to marker positions
+        this.report.lat = this.marker.position.lat;
+        this.report.lng = this.marker.position.lng;
+        this.getLocation()
         this.panToMarker();
       });
     },
+
     //sets the position of marker when dragged
     handleMarkerDrag(e) {
       this.marker.position = { lat: e.latLng.lat(), lng: e.latLng.lng() };
@@ -118,6 +133,9 @@ export default {
       // updates current report coordinates to marker positions
       this.report.lat = this.marker.position.lat;
       this.report.lng = this.marker.position.lng;
+
+      // updates report.location
+      this.getLocation();
     },
 
     // Moves the map view port to marker
@@ -133,6 +151,9 @@ export default {
       // updates current report coordinates to marker positions
       this.report.lat = this.marker.position.lat;
       this.report.lng = this.marker.position.lng;
+
+      // updates report.location
+      this.getLocation();
     },
   },
 };

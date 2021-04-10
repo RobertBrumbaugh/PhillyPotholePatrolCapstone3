@@ -27,34 +27,20 @@
       <div id="report-box">
         <table id="user-report-table"  class="styled-table">
           <th> Date Reported:</th> 
-          <th> Zip Code:</th>
+          <th> Address:</th>
           <th> User Severity:</th>
           <th> Reported By:</th>
           <tr>
-            <!-- <td>Date Reported: </td> -->
             <td>{{ report.reported }}</td>
-            <!-- <td>Zip Code: </td> -->
-            <td></td>
-            <!-- <td> {{returnLocation(report)}} </td> -->
-              <!-- <td>User Severity:</td> -->
+            <td>{{ report.location}} </td>
             <td>{{ report.user_severity}}</td>
-            <!-- <td>Reported By: </td> -->
             <td>{{ report.username }}</td>
-            </tr>
-            </table>
-
-        <!-- <p>
-       <strong>Date Reported:</strong> {{ report.reported }} <strong>Username:</strong> {{ report.username }}
-       <br>
-       <strong>Report ID:</strong> {{ report.report_id }} <strong>Status:</strong> {{ reportStatus(report) }} 
-       <br>
-       <strong>Latitude:</strong> {{ report.lat }} <strong>Longitude:</strong> {{report.lng}}
-       <br>
-       <strong>Reported Severity:</strong> "{{report.user_severity}}" <strong>Official Severity Code:</strong> {{ reportSeverity(report) }} 
-      </p> -->
+          </tr>
+        </table>
       </div>
       </router-link>
     </div>
+
     <div v-else>
           <h3> Sort by Internal Severity: 
       <select id="reportFilter" v-model="filter.severity">
@@ -82,44 +68,32 @@
 
           <tr>
             <td>Date Reported: </td>
-            <td>{{ report.reported }} </td>
+            <td> {{ report.reported }} </td>
             <td>Date Repaired: </td>
-            <td>{{ report.repaired }} </td>
+            <td> {{ report.repaired }} </td>
           </tr>
           <tr>
             <td>Username: </td>
-            <td>{{ report.username }}</td>
+            <td> {{ report.username }}</td>
             <td>Offical Status Code: </td>
-            <td>{{ report.status}} </td>
+            <td> {{ report.status}} </td>
 
           </tr>
           <tr>
-            <td>Zip Code: </td>
-            <!-- ZIP CODE API CALL -->
-            <!-- <td> {{ returnLocation(report) }} </td> -->
-            <td> </td>
+            <td>Address: </td>
+            <td> {{ report.location}} </td>
             <td>Official Severity Code: </td>
-            <td>{{ report.severity }}</td>
+            <td> {{ report.severity }}</td>
        
           </tr>
           <tr>
             <td>User Severity:</td>
-            <td>{{ report.user_severity}} </td>
+            <td> {{ report.user_severity}} </td>
             <!-- <td>Geolocation:  </td>
             <td>Math.round({{ report.lat }}) Math.round({{ report.lng }})</td> -->
           </tr>
 
         </table>
-
-        <!-- <p>
-       <strong>Date Reported:</strong> {{ report.reported }} <strong>Username:</strong> {{ report.username }}
-       <br>
-       <strong>Report ID:</strong> {{ report.report_id }} <strong>Status:</strong> {{ reportStatus(report) }} 
-       <br>
-       <strong>Latitude:</strong> {{ report.lat }} <strong>Longitude:</strong> {{report.lng}}
-       <br>
-       <strong>Reported Severity:</strong> "{{report.user_severity}}" <strong>Official Severity Code:</strong> {{ reportSeverity(report) }} 
-      </p> -->
       </div>
     
       </router-link>
@@ -131,7 +105,6 @@
 
 <script>
 import reportService from "../services/ReportService.js";
-// import Vue from 'vue';
 
 export default {
   name: "report-list",
@@ -179,22 +152,14 @@ export default {
     this.role = this.$store.state.user.authorities[0].name
   },
   methods: {
-//     returnLocation(report) {
-//     var latLngObj = {
-//     lat: report.lat,
-//     lng: report.lng
-// }
-// Vue.$geocoder.send(latLngObj).then( response => {
-//       return response });
-//     },
-
     reportStatus(report) {
       if (report.status === 1) {
         return "Reported";
       }
       else if (report.status === 2) {
         return "Inspected"
-      } else if (report.status === 3) {
+      } 
+      else if (report.status === 3) {
         return "Repaired"
       }
     },

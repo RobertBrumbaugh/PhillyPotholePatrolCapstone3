@@ -10,6 +10,7 @@ public class Report {
 	private String username;
 	private BigDecimal lat;
 	private BigDecimal lng;
+	private String location;
 	private String user_severity;
 	private String reported;
 	private String inspected;
@@ -17,7 +18,6 @@ public class Report {
 	private int status;
 	private int severity;
 	private String img;
-	
 	
 	// Getters and Setters
 	
@@ -44,6 +44,12 @@ public class Report {
 	}
 	public void setLng(BigDecimal lng) {
 		this.lng = lng;
+	}
+	public String getLocation() {
+		return location;
+	}
+	public void setLocation(String location) {
+		this.location = location;
 	}
 	public String getUser_severity() {
 		return user_severity;
