@@ -3,8 +3,6 @@
   <div class="home">
     <router-link v-bind:to="{ name: 'report-list' }" v-if="role == 'ROLE_EMPLOYEE'"> <h1>Employee Portal</h1> </router-link>
     <h1 v-else>Welcome to Pothole Patrol</h1>
-    <!-- <p id="greetings">Greetings {{username}} !!</p>
-     <br> -->
     <img src="@/assets/PotholeLogo.png">
   </div>
 </template>

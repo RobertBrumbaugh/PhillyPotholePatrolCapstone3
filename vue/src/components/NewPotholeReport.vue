@@ -38,8 +38,6 @@
         />
       </GmapMap>
 
-      <!-- <br>
-      <button @click="geolocate">Detect Location</button> -->
       <p>Nearest Address to Pin: {{ this.report.location }}</p>
       <p>LAT: {{ marker.position.lat }} LNG: {{ marker.position.lng }}</p>
       
@@ -123,8 +121,10 @@ export default {
         // updates current report coordinates to marker positions
         this.report.lat = this.marker.position.lat;
         this.report.lng = this.marker.position.lng;
-        this.getLocation()
         this.panToMarker();
+
+        // updates report.location
+        this.getLocation()
       });
     },
 

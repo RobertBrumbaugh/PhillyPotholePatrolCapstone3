@@ -6,14 +6,12 @@
           <th>Date Reported: </th>
           <th>Address: </th>
           
-
           <tr>
             <td>{{ report.user_severity}} </td>
             <td>{{ report.username }}</td>
             <td>{{ report.reported }} </td>
             <td>{{ report.location }}</td>
           </tr>
-
 
         </table>
 
@@ -114,7 +112,8 @@ export default {
       }
       else if (report.status === 2) {
         return "Inspected"
-      } else if (report.status === 3) {
+      } 
+      else if (report.status === 3) {
         return "Repaired"
       }
     },
@@ -145,6 +144,5 @@ export default {
   align-items: center;
   justify-content: center;
 }
-
 
 </style>

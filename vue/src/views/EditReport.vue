@@ -25,8 +25,8 @@
             <input name="inspected" type="date" v-model="report.inspected"/>
         </td>
         <td>
-          <label for="inspected"/>
-            <input name="inspected" type="date" v-model="report.inspected"/>
+          <label for="repaired"/>
+            <input name="repaired" type="date" v-model="report.repaired"/>
         </td>
         <td>
           <label for="severity"/>
@@ -152,7 +152,8 @@ data() {
       }
       else if (report.status === 2) {
         return "Inspected"
-      } else if (report.status === 3) {
+      } 
+      else if (report.status === 3) {
         return "Repaired"
       }
     },

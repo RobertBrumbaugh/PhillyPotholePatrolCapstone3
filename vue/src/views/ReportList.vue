@@ -23,21 +23,8 @@
         v-bind:to="{ name: 'report-details', params: { id: report.report_id } }"
         v-for="report in filteredReports"
         v-bind:key="report.report_id"
-      >
-        <div id="report-box">
-          <table id="user-report-table" class="styled-table">
-            <th>Date Reported:</th>
-            <th>Address:</th>
-            <th>User Severity:</th>
-            <th>Reported By:</th>
-            <tr>
-              <td>{{ report.reported }}</td>
-              <td>{{ report.location }}</td>
-              <td>{{ report.user_severity }}</td>
-              <td>{{ report.username }}</td>
-            </tr>
-          </table>
-        </div>
+      > 
+        <report-user v-bind:report="report"/>
       </router-link>
     </div>
 
@@ -70,36 +57,7 @@
         v-for="report in filteredReports"
         v-bind:key="report.report_id"
       >
-        <div id="report-box">
-            <table id="employee-report-table">
-              <th>Report ID: </th>    
-              <th>Date Reported: </th>
-              <th>Address: </th>
-              <th>Reported By:</th>
-              
-              <tr>
-                <td>{{ report.report_id }}</td>
-                <td>{{ report.reported }} </td>
-                <td>{{ report.location}} </td>
-                <td>{{ report.username}}</td>
-
-              </tr>
-
-              <th>Official Status Code:</th>
-              <th>Official Severity:</th>
-              <th>Date Inspected</th>
-              <th>Date Repaired</th>
-
-              <tr>
-              <td>{{report.status}}</td>
-              <td>{{report.severity}}</td>
-              <td>{{ report.inspected}} </td>
-              <td>{{ report.repaired }}</td>
-              </tr>
-
-            
-          </table>
-        </div>
+        <report-employee v-bind:report="report"/>
       </router-link>
     </div>
   </div>
@@ -107,9 +65,15 @@
 
 <script>
 import reportService from "../services/ReportService.js";
+import reportUser from "../components/ReportUser"
+import reportEmployee from "../components/ReportEmployee"
 
 export default {
   name: "report-list",
+  components: {
+    reportUser,
+    reportEmployee
+  },
   data() {
     return {
       reports: [],

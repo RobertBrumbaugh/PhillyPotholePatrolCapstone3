@@ -8,7 +8,6 @@
 <script>
 import NewPotholeReport from '../components/NewPotholeReport.vue';
 
-
 export default {
     name: 'add-report',
     components: {
