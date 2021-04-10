@@ -4,20 +4,16 @@
           <th>User Severity: </th>
           <th>Reported By: </th>
           <th>Date Reported: </th>
-          <th>Zip Code: </th>
+          <th>Address: </th>
           
 
           <tr>
             <td>{{ report.user_severity}} </td>
             <td>{{ report.username }}</td>
             <td>{{ report.reported }} </td>
-            <td></td>
+            <td>{{ report.location }}</td>
           </tr>
 
-          <tr>
-            <!-- <td>Geolocation:  </td>
-            <td>Math.round({{ report.lat }}) Math.round({{ report.lng }})</td> -->
-          </tr>
 
         </table>
 

@@ -1,41 +1,61 @@
 <template>
 <div id ="map">
 
-   <p>
-       Report id: {{ report.report_id }}  Date Reported:{{ report.reported }}
-       <br>
-       Current Status Code: {{ report.status }} 
-       <br>
-       <label for="status">Change Status:</label> 
-        <select name="status" id="status" v-model="report.status">
-          <option value="1">Reported</option>
-          <option value="2">Inspected</option>
-          <option value="3">Repaired</option>
-      </select>
-<br>
-      <label for="inspected">Schedule for inspection:</label>
-      <input name="inspected" type="date" v-model="report.inspected"/>
-<br>
-      <label for="repaired">Schedule for repair:</label>
-      <input name="repaired" type="date" v-model="report.repaired"/>
-<br>
-      <!-- Make each of these v-model on click to the different methods -->
-      <br>
-      Current Severity Code: {{ report.severity }} 
-      <br> 
-      <label for="severity">Change Severity:</label>
-        <select name="severity" id="severity" v-model="report.severity">
-          <option value="0">0</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-      </select>
-       <button id="delete" v-on:click.prevent="deleteReport(report.report_id)">Delete</button>
-       <br>
-       <button id="update" v-on:click.prevent="updateReport(report)">Update</button> 
-      </p>
-<br>
-      <h3> Reported By: {{report.username}} Id: {{report.report_id}} Date: {{report.reported}} Severity: {{report.user_severity}} </h3>
+<h1> Edit Report #{{report.report_id}} </h1>
+    <table id="employee-edit-table">
+      <th> Report ID: </th>
+      <th> Date Reported: </th>
+      <th> Reported By: </th>
+      <th> Status: </th>
+
+      <tr>
+        <td>{{ report.report_id }}</td>
+        <td>{{ report.reported }}</td>
+        <td>{{ report.username }}</td>
+        <td>{{ report.status }} </td>
+      </tr>
+      <th> Schedule For Inspection: </th>
+      <th> Schedule For Repair: </th>
+      <th> Change Severity: </th>
+      <th> Change Status: </th>
+
+      <tr>
+        <td>
+          <label for="inspected"/>
+            <input name="inspected" type="date" v-model="report.inspected"/>
+        </td>
+        <td>
+          <label for="inspected"/>
+            <input name="inspected" type="date" v-model="report.inspected"/>
+        </td>
+        <td>
+          <label for="severity"/>
+            <select name="severity" id="severity" v-model="report.severity">
+              <option value="0">TBD</option>
+              <option value="1">Minor</option>
+              <option value="2">Average</option>
+              <option value="3">Major</option>
+            </select>
+        </td>
+        
+        <td> 
+          <label for="status"/>
+          <select name="status" id="status" v-model="report.status">
+            <option value="1">Reported</option>
+            <option value="2">Inspected</option>
+            <option value="3">Repaired</option>
+          </select> 
+      </td>
+      </tr>
+    </table>
+        <div>
+    <button id="update" v-on:click.prevent="updateReport(report)">Update</button> 
+    </div>
+    <br>
+    <div>
+    <button id="delete" v-on:click.prevent="deleteReport(report.report_id)">Delete</button>
+    </div>
+    <br>
       <div>
       <GmapMap
         :center="center"
