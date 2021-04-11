@@ -37,13 +37,14 @@
         required
       />
       </div>
-      <br>
-        <div>
-      <router-link :to="{ name: 'register' }">Need an account?</router-link>
-      </div>
+      
       <br>
       <div>
       <button type="submit" >Sign in</button>
+      </div>
+      <br>
+        <div>
+      <router-link :to="{ name: 'register' }">Need an account?</router-link>
       </div>
     </form>
   </div>

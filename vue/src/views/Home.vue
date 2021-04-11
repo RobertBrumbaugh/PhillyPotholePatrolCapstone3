@@ -25,7 +25,7 @@ export default {
 
 <style scoped>
 img {
-  width: 42vw;
+  width: 40vw;
    box-shadow: 0 0 20px rgba(0, 0, 0, 0.50);
 }
 </style>

@@ -48,13 +48,10 @@
       </td>
       </tr>
     </table>
-        <div>
+    <h3>
     <button id="update" v-on:click.prevent="updateReport(report)">Update</button> 
-    </div>
-    <br>
-    <div>
     <button id="delete" v-on:click.prevent="deleteReport(report.report_id)">Delete</button>
-    </div>
+    </h3>
     <br>
       <div>
       <GmapMap

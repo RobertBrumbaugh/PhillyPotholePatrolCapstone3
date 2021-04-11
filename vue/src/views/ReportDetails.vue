@@ -1,5 +1,5 @@
 <template>
-  <div id ="map">
+  <div id ="details">
       <table id="user-details-table" class="user-details-table">
           <th>User Severity: </th>
           <th>Reported By: </th>
@@ -15,7 +15,7 @@
 
         </table>
 
-      <div>
+      <div id="map">
       <GmapMap
         :center="center"
         :zoom="18"
@@ -138,7 +138,7 @@ export default {
 
 <style>
 
-#map {
+#details, #map {
   display: flex;
   flex-direction: column;
   align-items: center;

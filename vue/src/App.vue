@@ -11,11 +11,12 @@
       <div id="nav">
         <ul>
           <li> <router-link v-bind:to="{ name: 'home' }"> Home</router-link>  </li>
-          <li> <router-link v-bind:to="{ name: 'report-list' }"> Current Potholes </router-link>  </li>
-          <li> <router-link v-bind:to="{ name: 'add-report'}"  v-if="$store.state.token != ''"> Save New Pothole </router-link>  </li>
+          <li> <router-link v-bind:to="{ name: 'report-list' }" v-if="role != 'ROLE_EMPLOYEE'"> Current Potholes </router-link>  </li>
+          <li> <router-link v-bind:to="{ name: 'add-report'}" v-if="$store.state.token != ''"> Save New Pothole </router-link>  </li>
+          <li> <router-link v-bind:to="{ name: 'edit-report' }" v-if="role == 'ROLE_EMPLOYEE'"> Employee Portal </router-link> </li>
           <li> <router-link v-bind:to="{ name: 'login' }" v-if="$store.state.token == ''"> Login </router-link> </li>
           <li> <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''"> Logout </router-link> </li>
-          <li> <router-link v-bind:to="{ name: 'edit-report' }" v-if="role == 'ROLE_EMPLOYEE'"> Employee Portal </router-link> </li>
+          
        </ul>  <!-- Employee Portal needs a v-if and will take them to the edit report page -->
       </div>
       
@@ -52,7 +53,7 @@ export default {
 
 #nav {
   font-size: 18px;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   color: white;
   display: flex;
   justify-content: flex-end;

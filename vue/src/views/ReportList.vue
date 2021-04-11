@@ -45,7 +45,7 @@
         <option value="2">Inspected</option>
         <option value="3">Repaired</option>
       </select>
-
+      <br>
       <h3>Find by Id:</h3>
       <input type="text" id="reportIdFilter" v-model="filter.report_id" />
 
@@ -161,9 +161,5 @@ export default {
 </script>
 
 <style>
-h3 {
-  display: inline-flex;
-  padding: 10px;
-  vertical-align: middle;
-}
+
 </style>
