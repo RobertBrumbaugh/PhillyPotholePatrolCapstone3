@@ -2,7 +2,7 @@
   <div class="pothole-list">
     <h1>Active Potholes</h1>
 
-    <div class="report" v-if="role != 'ROLE_EMPLOYEE'">
+    <div class="report" v-if="this.$store.state.role != 'ROLE_EMPLOYEE'">
       <h3>Sort by User Severity:</h3>
       <select id="reportFilter" v-model="filter.user_severity">
         <option value>Show All</option>
@@ -77,7 +77,7 @@ export default {
   data() {
     return {
       reports: [],
-      role: "",
+      // role: "",
       filter: {
           severity: "",
           user_severity: "",
@@ -133,10 +133,9 @@ export default {
       this.reports = response.data;
     });
   },
-  mounted() {
-    this.username = this.$store.state.user.username;
-    this.role = this.$store.state.user.authorities[0].name;
-  },
+  // mounted() {
+  //   this.username = this.$store.state.user.username;
+  // },
   methods: {
     reportStatus(report) {
       if (report.status === 1) {

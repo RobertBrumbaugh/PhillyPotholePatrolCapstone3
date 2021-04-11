@@ -5,6 +5,8 @@
         Please drag or click on the map to mark the location of the pothole you
         are reporting:
       </p>
+
+      <p> Nearest Address to Pin: <u>{{ this.report.location }} </u></p>
       <div> 
         <label for="severity">Please rank the pothole's severity:</label>
         <select name="severity" id="severity" v-model="report.user_severity">
@@ -15,6 +17,7 @@
           <option value="Catastrophic">Catastrophic</option>
         </select>
       </div>
+
       <br />
       <button type="submit" v-on:click="saveReport">Save</button>
       <br />
@@ -38,7 +41,7 @@
         />
       </GmapMap>
 
-      <p>Nearest Address to Pin: {{ this.report.location }}</p>
+      
       <p>LAT: {{ marker.position.lat }} LNG: {{ marker.position.lng }}</p>
       
     </div>

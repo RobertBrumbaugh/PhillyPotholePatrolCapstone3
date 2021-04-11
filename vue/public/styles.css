@@ -20,7 +20,7 @@ body{
   /* padding: .5em; */
   /* border-radius: 10px; */
   width: 100%;
-  width: 70vw;
+  width: 75vw;
   height: 83vh;
   overflow: auto;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.50);
@@ -40,7 +40,7 @@ color: white;
 }
 
 .header-img {
-width: 70vw;
+width: 75vw;
 height: 100px;
 background: url('http://www.mccworldinternational.com/wp-content/themes/mcc-world/images/contact_us.jpg');
 background-size:cover;
@@ -166,7 +166,6 @@ padding: 10px;
 #user-details-table td {
   padding: 10px;
   font-weight: 100;
-
 }
 
 #user-details-table th {
@@ -181,6 +180,14 @@ font-family: Arial, Helvetica, sans-serif;
 margin-left: 5px;
 vertical-align: middle;
 
+}
+
+select {
+  margin-right: 5px;
+}
+
+button {
+  margin: 0 10px;
 }
 
 #employee-report-table, #employee-edit-table {

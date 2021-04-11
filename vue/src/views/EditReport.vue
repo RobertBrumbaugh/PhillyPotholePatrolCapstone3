@@ -3,13 +3,13 @@
 
 <h1> Edit Report #{{report.report_id}} </h1>
     <table id="employee-edit-table">
-      <th> Report ID: </th>
+      <th> Address: </th>
       <th> Date Reported: </th>
       <th> Reported By: </th>
       <th> Status: </th>
 
       <tr>
-        <td>{{ report.report_id }}</td>
+        <td>{{ report.location }}</td>
         <td>{{ report.reported }}</td>
         <td>{{ report.username }}</td>
         <td>{{ report.status }} </td>
@@ -49,8 +49,8 @@
       </tr>
     </table>
     <h3>
-    <button id="update" v-on:click.prevent="updateReport(report)">Update</button> 
-    <button id="delete" v-on:click.prevent="deleteReport(report.report_id)">Delete</button>
+    <button class="btn-style" id="update" v-on:click.prevent="updateReport(report)">Update</button> 
+    <button class="btn-style" id="delete" v-on:click.prevent="deleteReport(report.report_id)">Delete</button>
     </h3>
     <br>
       <div>
@@ -204,3 +204,12 @@ data() {
 
 };
 </script>
+
+<style> 
+
+.btn-style {
+  margin: 0 10px;
+  padding: 5px;
+}
+
+</style>

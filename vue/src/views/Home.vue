@@ -16,9 +16,11 @@ export default {
       role: ""
     }
   },
-  mounted() {
-    this.username= this.$store.state.user.username;
-    this.role = this.$store.state.user.authorities[0].name
+  created() {
+    if (this.$store.state.token != ''){
+      this.username= this.$store.state.user.username;
+      this.role = this.$store.state.user.authorities[0].name
+    }
   }
 };
 </script>

@@ -20,6 +20,7 @@ export default new Vuex.Store({
   state: {
     token: currentToken || '',
     user: currentUser || {},
+    role: '',
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -30,12 +31,15 @@ export default new Vuex.Store({
     SET_USER(state, user) {
       state.user = user;
       localStorage.setItem('user',JSON.stringify(user));
+      // state.role = state.user.authorities[0].name
+      state.role = state.user;
     },
     LOGOUT(state) {
       localStorage.removeItem('token');
       localStorage.removeItem('user');
       state.token = '';
       state.user = {};
+      state.role = '';
       axios.defaults.headers.common = {};
     }
   }
