@@ -123,7 +123,9 @@ export default {
        report.location.toLowerCase().includes(this.filter.location.toLowerCase())
        )
      }
-      return filteredSeverity;
+      return filteredSeverity.sort((a, b) => {
+        return b.report_id - a.report_id;
+      });
     },
   },
   created() {
