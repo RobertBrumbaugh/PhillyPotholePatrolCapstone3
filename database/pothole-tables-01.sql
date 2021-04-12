@@ -1,5 +1,6 @@
 BEGIN TRANSACTION;
 
+DROP TABLE IF EXISTS damage_claim;
 DROP TABLE IF EXISTS reports;
 DROP TABLE IF EXISTS locations;
 DROP TABLE IF EXISTS severity_types;
@@ -61,6 +62,25 @@ CREATE TABLE severity_types
         constraint pk_severity_types primary key (severity_id)
 );
 
+CREATE TABLE damage_claim
+(
+        damage_claim_id serial,
+        report_id int,
+        full_name varchar(100),
+        phone_number varchar(32), 
+        email varchar(100),
+        address varchar(100),
+        incident_date varchar(64),
+        car varchar(64),
+        damage_description varchar(400),
+        
+        constraint pk_damage_claim primary key (damage_claim_id)
+);
+
+ALTER TABLE damage_claim
+ADD CONSTRAINT
+        fk_damage_claim_report_id foreign key (report_id) references reports (report_id);
+
 ALTER TABLE reports
 ADD CONSTRAINT
         fk_reports_username foreign key (username) references users (username);
@@ -91,6 +111,8 @@ INSERT INTO reports (username, lat, lng, location, user_severity, reported, stat
         ( 'JohnnyQPublic', 39.95277884627590, -75.16361112345678, '123 Fake Street Hollywood CA 90210', 'Minor', '4/5/2021, 9:03:20 AM', 1, 0),
         ( 'JohnnyQPublic', 39.97277804978631, -75.13161109876543, '123 Fake Street Hollywood CA 90210', 'Could bust a tire', '4/6/2021, 5:13:20 PM', 1, 0);
         
+INSERT INTO damage_claim (report_id, full_name, phone_number, email, address, incident_date, car, damage_description) 
+        VALUES (1, 'Johnny Q Public', '215-555-5555', 'fake@obvious.duh', '123 Fake Street Hollywood CA 90210', '4/5/2021', 'Toyota Corolla', 'Damage to the front passenger side wheel and axle');
 
 GRANT ALL
 ON ALL TABLES IN SCHEMA public
@@ -107,6 +129,5 @@ TO final_capstone_appuser;
 GRANT USAGE, SELECT
 ON ALL SEQUENCES IN SCHEMA public
 TO final_capstone_appuser;
-        
-        
+   
 COMMIT TRANSACTION;

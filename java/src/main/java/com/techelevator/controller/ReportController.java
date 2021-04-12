@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.techelevator.dao.ReportSqlDAO;
+import com.techelevator.model.DamageClaim;
 import com.techelevator.model.Report;
 
 import java.util.List;
@@ -57,10 +58,18 @@ public class ReportController {
 		ReportSqlDAO.updateReport(report);
 	}
 	
+	@ResponseStatus(HttpStatus.CREATED)
+	@RequestMapping(path = "/damage-claims", method = RequestMethod.POST)
+	public void postDamageClaim(@RequestBody DamageClaim damageClaim) {
+		ReportSqlDAO.addDamageClaim(damageClaim);
+	}
 	
+	@RequestMapping(path = "/damage-claims", method = RequestMethod.GET)
+	public List<DamageClaim> getDamageClaims() {
+		return ReportSqlDAO.listDamageClaims();
+	}
 	
-	
-	
+	// BELOW ENDPOINTS NEVER USED IN THE APP! 
 	
 //	@PreAuthorize("isAuthenticated()")
 	@RequestMapping(path = "/reports/{report_id}/status/{status_id}", method = RequestMethod.PUT)

@@ -9,6 +9,7 @@ import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+import com.techelevator.model.DamageClaim;
 import com.techelevator.model.Report;
 import com.techelevator.model.User;
 
@@ -64,6 +65,31 @@ public class ReportSqlDAO implements ReportDAO {
 		
 	}
 	
+	@Override
+	public void addDamageClaim(DamageClaim damageClaim) {
+		
+		String sql = "INSERT INTO damage_claim "
+		+ "(report_id, full_name, phone_number, email, address, incident_date, car, damage_description) "
+		+ "VALUES ( ?, ?, ?, ?, ?, ?, ?, ?)";
+		
+		jdbcTemplate.update(sql, damageClaim.getReport_id(), damageClaim.getFull_name(), damageClaim.getPhone_number(), 
+		damageClaim.getEmail(), damageClaim.getAddress(), damageClaim.getIncident_date(), damageClaim.getCar(), damageClaim.getDamage_description());
+		
+	}
+	
+	@Override
+	public List<DamageClaim> listDamageClaims() {
+		List<DamageClaim> damageClaims = new ArrayList<>();
+		String sql = "SELECT * FROM damage_claim";
+		SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+		
+		while(results.next()) {
+			DamageClaim damageClaim = mapRowToDamageClaim(results);
+			damageClaims.add(damageClaim);
+		}
+		return damageClaims;
+	}
+	
 	
 	@Override
 	public void updateStatusByReportId(int report_id, int status_id) {
@@ -93,7 +119,7 @@ public class ReportSqlDAO implements ReportDAO {
 		jdbcTemplate.update(sql, repaired_date, report_id);
 	}
 
-	// helper method
+	// helper methods
 
 	private Report mapRowToReport(SqlRowSet rs) {
 		Report report = new Report();
@@ -110,6 +136,21 @@ public class ReportSqlDAO implements ReportDAO {
 		report.setSeverity(rs.getInt("severity"));
 		report.setImg(rs.getString("img"));
 		return report;
+	}
+	
+	private DamageClaim mapRowToDamageClaim(SqlRowSet rs) {
+		DamageClaim damageClaim = new DamageClaim();
+		damageClaim.setDamage_claim_id(rs.getInt("damage_claim_id"));
+		damageClaim.setReport_id(rs.getInt("report_id"));
+		damageClaim.setFull_name(rs.getString("full_name"));
+		damageClaim.setPhone_number(rs.getString("phone_number"));
+		damageClaim.setEmail(rs.getString("email"));
+		damageClaim.setAddress(rs.getString("address"));
+		damageClaim.setIncident_date(rs.getString("incident_date"));
+		damageClaim.setCar(rs.getString("car"));
+		damageClaim.setDamage_description(rs.getString("damage_description"));
+		return damageClaim;
+		
 	}
 
 

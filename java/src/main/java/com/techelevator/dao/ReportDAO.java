@@ -2,6 +2,7 @@ package com.techelevator.dao;
 
 import java.util.List;
 
+import com.techelevator.model.DamageClaim;
 import com.techelevator.model.Report;
 
 public interface ReportDAO {
@@ -13,6 +14,10 @@ public interface ReportDAO {
 	public void deleteReportByReportId(int report_id);
 	
 	public void updateReport(Report report);
+	
+	public void addDamageClaim(DamageClaim damageClaim);
+	
+	public List<DamageClaim> listDamageClaims();
 	
 	// single field update methods?? 
 	
