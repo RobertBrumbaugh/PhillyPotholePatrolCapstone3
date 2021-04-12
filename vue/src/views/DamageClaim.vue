@@ -8,20 +8,45 @@
     <form id="damage-form" v-on:submit.prevent>
       <div>
         <label for="name">Full Name: </label>
-        <input id="name" type="text" name="name" v-model="damageClaim.full_name"/>
-        <label for="phone-number">Phone Number: </label>
-        <input id="phone-number" type="tel" v-model="damageClaim.phone_number"/>
+        <input
+          id="name"
+          type="text"
+          name="name"
+          v-model="damageClaim.full_name"
+        />
+        <label for="phonenumber">Phone Number: </label>
+        <input
+          id="phone-number"
+          type="tel"
+          name="phonenumber"
+          v-model="damageClaim.phone_number"
+        />
       </div>
       <div>
         <label for="email">Email Address: </label>
-        <input id="email" type="email" name="email" v-model="damageClaim.email"/>
+        <input
+          id="email"
+          type="email"
+          name="email"
+          v-model="damageClaim.email"
+        />
 
         <label for="address">Home Address: </label>
-        <input id="address" type="text" name="address" v-model="damageClaim.address"/>
+        <input
+          id="address"
+          type="text"
+          name="address"
+          v-model="damageClaim.address"
+        />
       </div>
       <div>
-        <label for="incident-date">Incident Date: </label>
-        <input type="datetime-local" v-model="damageClaim.incident_date"/>
+        <label for="incidentdate">Incident Date: </label>
+        <input
+          id="incident-date"
+          type="datetime-local"
+          name="incidentdate"
+          v-model="damageClaim.incident_date"
+        />
       </div>
       <div>
         <label for="car">Car Make and Model: </label>
@@ -45,13 +70,15 @@
 
 <script>
 import ReportService from "../services/ReportService";
+import emailjs from "emailjs-com";
 
 export default {
   name: "damage-claim",
   data() {
     return {
       damageClaim: {
-        report_id: Number,
+        damage_claim_id: 0,
+        report_id: 0,
         full_name: "",
         phone_number: "",
         email: "",
@@ -60,25 +87,59 @@ export default {
         car: "",
         damage_description: "",
       },
+      damageClaims: [],
     };
+  },
+  created() {
+    this.damageClaim.report_id = this.$route.params.id;
   },
   methods: {
     saveDamageClaim() {
-      this.damageClaim.report_id = this.$route.params.id;
 
       ReportService.addDamageClaim(this.damageClaim).then((response) => {
         if (response.status === 201) {
-          this.damageClaim = {
-            report_id: 0,
-            full_name: "",
-            phone_number: "",
-            email: "",
-            address: "",
-            incident_date: "",
-            car: "",
-            damage_description: "",
-          };
-          this.$router.push("/reports");
+
+          ReportService.getDamageClaims().then((response) => {
+            this.damageClaims = response.data;
+            let maxId = 0;
+            this.damageClaims.forEach((claim) => {
+              if (claim.damage_claim_id > maxId) {
+                maxId = claim.damage_claim_id;
+              }
+            });
+            this.damageClaim.damage_claim_id = maxId;
+
+            let template = {
+              claimid: this.damageClaim.damage_claim_id,
+              from_name: "Philly Pothole Patrol",
+              email: this.damageClaim.email,
+              pothole: this.damageClaim.report_id,
+              name: this.damageClaim.full_name,
+              incidentdate: this.damageClaim.incident_date,
+              car: this.damageClaim.car,
+              description: this.damageClaim.damage_description,
+              phonenumber: this.damageClaim.phone_number,
+              address: this.damageClaim.address,
+            };
+            
+            emailjs.send(
+              "service_6m763ki",
+              "template_fyr6lpj",
+              template,
+              "user_uonguwpbfCY1tRYQaAr3u"
+            );
+            this.damageClaim = {
+              report_id: 0,
+              full_name: "",
+              phone_number: "",
+              email: "",
+              address: "",
+              incident_date: "",
+              car: "",
+              damage_description: "",
+            };
+            this.$router.push("/reports");
+          });
         }
       });
     },
