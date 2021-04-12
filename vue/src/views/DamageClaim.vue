@@ -64,7 +64,9 @@
         />
       </div>
       <button type="submit" v-on:click="saveDamageClaim">Save</button>
-    </form>
+     
+    </form> 
+    <p> A copy of your submission will be emailed to you for your records. </p>
   </div>
 </template>
 

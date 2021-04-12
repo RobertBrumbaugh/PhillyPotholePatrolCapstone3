@@ -1,18 +1,20 @@
 <template>
-  <div>
-    <h1>Public Report</h1>
-    <p>
-      TOTAL POTHOLES REPORTED:
-      <span> {{ reported }} </span>
-    </p>
-    <p>
-      TOTAL POTHOLES INSPECTED:
-      <span> {{ inspected }} </span>
-    </p>
-    <p>
-      TOTAL POTHOLES REPAIRED:
-      <span> {{ repaired }} </span>
-    </p>
+  <div id="public-reporting">
+    <h1>Public Reporting</h1>
+    <h3>The City of Philadelphia has been hard at work repairing potholes.</h3> 
+    <p>With the help of the Pothole Patrol Reporting App, we have been able to complete the following work: </p>
+    <table id="public-details-table">
+          <th>Potholes Reported: </th>
+          <th>Potholes Inspected:</th>
+          <th>Potholes Repaired:</th>
+
+          <tr>
+            <td>{{ getReported()  }}</td>
+            <td>{{ getInspected() }} </td>
+            <td>{{ getRepaired() }}</td>
+          </tr>
+
+        </table>
   </div>
 </template>
 

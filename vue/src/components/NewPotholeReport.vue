@@ -1,10 +1,10 @@
 <template>
   <div>
     <form class="new-pothole-report" v-on:submit.prevent>
-      <p>
+      <h3>
         Please drag or click on the map to mark the location of the pothole you
         are reporting:
-      </p>
+      </h3>
 
       <p> Nearest Address to Pin: <u>{{ this.report.location }} </u></p>
       <div> 

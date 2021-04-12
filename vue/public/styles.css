@@ -11,14 +11,12 @@ body{
   background-size: 120% 120%; 
   font-family: 'Work Sans', sans-serif;
   overflow:auto;
-  text-transform: capitalize;
+  /* text-transform: capitalize; */
 }
 
 #app {
   background: #2b2a2ad8;
   color: white;
-  /* padding: .5em; */
-  /* border-radius: 10px; */
   width: 100%;
   width: 75vw;
   height: 83vh;
@@ -28,7 +26,6 @@ body{
 
 h3 {
 display: inline-flex;
-padding: 0px 5px;
 vertical-align: middle;
 } 
 
@@ -46,13 +43,12 @@ background: url('http://www.mccworldinternational.com/wp-content/themes/mcc-worl
 background-size:cover;
 position: relative;
 box-shadow: 0 0 10px rgba(0, 0, 0, 0.50);
-
 }
 
 /*  links  */
 
 a:link {
-color: rgb(106, 176, 185);
+color: #2b2a2ad8;
 background-color: transparent;
 text-decoration: none;
 }
@@ -61,10 +57,10 @@ a:visited {
 color: rgb(255, 255, 255);
 background-color: transparent;
 text-decoration: none;
-
 }
+
 a:hover {
-color: rgb(173, 111, 111);
+color: #686868;
 background-color: transparent;
 }
 
@@ -118,11 +114,10 @@ margin: 20px 0;
 font-size: 20px ;
 background-color:rgb(71,193,185); 
 color: white;
-/* background-color:rgb(185, 185, 185); 
-color: black; */
 width: 100%;
 box-shadow: 0 0 20px rgba(0, 0, 0, 0.50);
 text-align: left;
+text-transform: capitalize;
 }
 
 .styled-table tr {
@@ -138,10 +133,10 @@ font-size: 16px;
 .styled-table th,
 .styled-table td {
 padding: 12px 15px;
-
 }
 
-#user-details-table {
+#user-details-table,
+#public-details-table {
 border-collapse: collapse;
 margin: 20px 0;
 font-weight: 600;
@@ -151,9 +146,11 @@ width: 80%;
 box-shadow: 0 0 20px rgba(0, 0, 0, 0.50);
 text-align: left;
 align-items: center;
+text-transform: capitalize;
 }
 
-#user-details-table tr {
+#user-details-table tr,
+#public-details-table tr {
 background-color: rgb(255, 255, 255);
 color: black;
 text-align: left;
@@ -163,12 +160,14 @@ font-size: 16px;
 padding: 10px;
 }
 
-#user-details-table td {
+#user-details-table td,
+#public-details-table td {
   padding: 10px;
   font-weight: 100;
 }
 
-#user-details-table th {
+#user-details-table th,
+#public-details-table th {
 padding: 10px;
 text-transform: capitalize;
 font-size: 18px;
@@ -216,7 +215,7 @@ font-size: 16px;
 #employee-report-table td,
 #employee-edit-table th,
 #employee-edit-table td {
-padding: 12px 15px;
+  padding: 12px 15px;
 }
 
 #damage-report {
@@ -232,4 +231,10 @@ padding: 12px 15px;
   margin: 5px;
 } 
 
+#public-reporting {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
+}

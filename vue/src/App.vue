@@ -61,6 +61,7 @@ export default {
  font-size: 24px;
  text-align: left;
  grid-area: top-left;
+  text-transform: capitalize;
 }
 
 </style>
