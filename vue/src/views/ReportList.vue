@@ -77,7 +77,6 @@ export default {
   data() {
     return {
       reports: [],
-      // role: "",
       filter: {
           severity: "",
           user_severity: "",
@@ -133,9 +132,6 @@ export default {
       this.reports = response.data;
     });
   },
-  // mounted() {
-  //   this.username = this.$store.state.user.username;
-  // },
   methods: {
     reportStatus(report) {
       if (report.status === 1) {

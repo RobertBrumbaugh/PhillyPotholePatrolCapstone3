@@ -1,7 +1,7 @@
 <template
 >
   <div class="home">
-    <router-link v-bind:to="{ name: 'report-list' }" v-if="role == 'ROLE_EMPLOYEE'"> <h1>Employee Portal</h1> </router-link>
+    <router-link v-bind:to="{ name: 'report-list' }" v-if="this.$store.state.role == 'ROLE_EMPLOYEE'"> <h1>Employee Portal</h1> </router-link>
     <h1 v-else>Welcome to Pothole Patrol</h1>
     <img src="@/assets/PotholeLogo.png">
   </div>
@@ -13,13 +13,11 @@ export default {
   data() {
     return {
       username: "",
-      role: ""
     }
   },
   created() {
     if (this.$store.state.token != ''){
       this.username= this.$store.state.user.username;
-      this.role = this.$store.state.user.authorities[0].name
     }
   }
 };
