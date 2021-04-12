@@ -35,6 +35,7 @@
       </GmapMap>
 
     </div>
+    <router-link v-bind:to="{ name: 'damage-claim', params: { id: report.report_id } }"> Submit Damage Claim </router-link>
   </div>
 </template>
 

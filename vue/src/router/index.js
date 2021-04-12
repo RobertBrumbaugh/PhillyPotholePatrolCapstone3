@@ -9,6 +9,7 @@ import AddReport from '../views/AddReport.vue'
 import EditReport from '../views/EditReport.vue'
 import store from '../store/index'
 import ReportDetails from '../views/ReportDetails.vue'
+import DamageClaim from '../views/DamageClaim.vue'
 
 Vue.use(Router)
 
@@ -88,6 +89,14 @@ const router = new Router({
         requiresAuth: false
       }
 
+    },
+    {
+      path: '/damage-claim/:id',
+      name: 'damage-claim',
+      component: DamageClaim,
+      meta: {
+        requiresAuth: true
+      }
     }
   ]
 })
