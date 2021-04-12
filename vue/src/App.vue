@@ -14,6 +14,7 @@
           <li> <router-link v-bind:to="{ name: 'report-list' }" v-if="this.$store.state.role != 'ROLE_EMPLOYEE'"> Current Potholes </router-link>  </li>
           <li> <router-link v-bind:to="{ name: 'report-list' }" v-if="this.$store.state.role == 'ROLE_EMPLOYEE'"> Employee Portal </router-link> </li>
           <li> <router-link v-bind:to="{ name: 'add-report'}" v-if="$store.state.token != ''"> Save New Pothole </router-link>  </li>
+          <li> <router-link v-bind:to="{ name: 'public-reporting'}" v-if="this.$store.state.role != 'ROLE_EMPLOYEE'"> Public Reporting</router-link></li>
           <li> <router-link v-bind:to="{ name: 'login' }" v-if="$store.state.token == ''"> Login </router-link> </li>
           <li> <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''"> Logout </router-link> </li>
           

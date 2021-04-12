@@ -2,7 +2,6 @@ BEGIN TRANSACTION;
 
 DROP TABLE IF EXISTS damage_claim;
 DROP TABLE IF EXISTS reports;
-DROP TABLE IF EXISTS locations;
 DROP TABLE IF EXISTS severity_types;
 DROP TABLE IF EXISTS status_types;
 

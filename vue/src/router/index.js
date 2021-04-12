@@ -10,6 +10,7 @@ import EditReport from '../views/EditReport.vue'
 import store from '../store/index'
 import ReportDetails from '../views/ReportDetails.vue'
 import DamageClaim from '../views/DamageClaim.vue'
+import PublicReporting from '../views/PublicReporting.vue'
 
 Vue.use(Router)
 
@@ -96,6 +97,14 @@ const router = new Router({
       component: DamageClaim,
       meta: {
         requiresAuth: true
+      }
+    },
+    {
+      path: '/public-reporting',
+      name: 'public-reporting',
+      component: PublicReporting,
+      meta: {
+        requiresAuth: false
       }
     }
   ]
