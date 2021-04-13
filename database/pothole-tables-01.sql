@@ -26,6 +26,8 @@ CREATE TABLE users (
 INSERT INTO users (username,password_hash,role) VALUES ('JohnnyQPublic','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
 INSERT INTO users (username,password_hash,role) VALUES ('admin','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_ADMIN');
 INSERT INTO users (username,password_hash,role) VALUES ('employee','$2a$10$EwiZHu3h.v1KmhrCpNloEOSPlvK3fKCwehl1uHgoWh7vfsDriAFR.','ROLE_EMPLOYEE');
+INSERT INTO users (username,password_hash,role) VALUES ('SouthPhillyGirl','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
+
 
 CREATE TABLE reports
 (
