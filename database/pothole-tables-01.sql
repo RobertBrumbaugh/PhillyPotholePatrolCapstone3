@@ -120,11 +120,11 @@ INSERT INTO reports (username, lat, lng, location, user_severity, reported, stat
         VALUES                                                     
         ( 'JohnnyQPublic', 39.92749552614909, -75.16582461072275, '1800 S Camac St, Philadelphia, PA 19148', 'Could bust a tire', '4/5/2021, 9:03:20 AM', 1, 0),
         ( 'SouthPhillyGirl', 39.92646525024146, -75.15076316471925, '244 Watkins St, Philadelphia, PA 19148', 'Minor', '4/6/2021, 5:13:20 PM', 1, 0),
-        ( 'ThisIsGritty', 39.93311326475592, -75.1589863105424, '1283 S 9th St, Philadelphia, PA 19147', 'Do not drive over me', '4/10/2021, 8:13:20 AM', 1, 0),
+        ( 'ThisIsGritty', 39.93311326475592, -75.1589863105424, '1283 S 9th St, Philadelphia, PA 19147', 'Do not drive over me', '4/7/2021, 8:13:20 AM', 1, 0),
         ( 'ChzSteakChamp', 39.93688680567627, -75.18882593628159, '2673 Wharton St, Philadelphia, PA 19146', 'Minor', '4/8/2021, 2:30:19 PM', 1, 0),
-        ( 'BenFranklinSim25', 39.961670590112604, -75.15602882276968, '1034 Spring Garden St, Philadelphia, PA 19123', 'Do not drive over me', '4/10/2021, 8:13:20 AM', 1, 0),
-        ( 'SwoopSwoopFly09', 39.9826454810186, -75.18836681957112, '33rd St & Cecil B Moore Av, Philadelphia, PA 19121', 'New route advised', '4/7/2021, 7:45:12 AM', 1, 0),
-        ( 'JawnBawnJovi', 39.97032828538133, -75.13011447561469, '411 E Girard Ave, Philadelphia, PA 19125', 'Catastrophic', '4/13/2021, 8:13:20 AM', 1, 0);
+        ( 'BenFranklinSim25', 39.961670590112604, -75.15602882276968, '1034 Spring Garden St, Philadelphia, PA 19123', 'Do not drive over me', '4/9/2021, 8:13:20 AM', 1, 0),
+        ( 'SwoopSwoopFly09', 39.9826454810186, -75.18836681957112, '33rd St & Cecil B Moore Av, Philadelphia, PA 19121', 'New route advised', '4/10/2021, 7:45:12 AM', 1, 0),
+        ( 'JawnBawnJovi', 39.97032828538133, -75.13011447561469, '411 E Girard Ave, Philadelphia, PA 19125', 'Catastrophic', '4/11/2021, 8:13:20 AM', 1, 0);
         
         
         
