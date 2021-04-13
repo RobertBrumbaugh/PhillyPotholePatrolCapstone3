@@ -39,4 +39,10 @@ props: ['report']
 
 <style>
 
+#employee-report-table tr,
+#employee-report-table td,
+#employee-report-table th {
+  width: 25vw;
+}
+
 </style>
