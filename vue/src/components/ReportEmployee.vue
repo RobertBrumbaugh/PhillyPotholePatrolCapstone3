@@ -11,7 +11,6 @@
                 <td>{{ this.report.reported }} </td>
                 <td>{{ this.report.location }} </td>
                 <td>{{ this.report.username }}</td>
-
               </tr>
 
               <th>Official Status Code:</th>
@@ -20,10 +19,10 @@
               <th>Date Repaired</th>
 
               <tr>
-              <td>{{ this.report.status }}</td>
-              <td>{{ this.report.severity }}</td>
-              <td>{{ this.report.inspected == null ? 'N/A' : this.report.inspected }} </td>
-              <td>{{ this.report.repaired == null ? 'N/A' : this.report.repaired}}</td>
+                <td>{{ this.report.status }}</td>
+                <td>{{ this.report.severity }}</td>
+                <td>{{ this.report.inspected == null ? 'N/A' : this.report.inspected }} </td>
+                <td>{{ this.report.repaired == null ? 'N/A' : this.report.repaired}}</td>
               </tr>
             
           </table>
@@ -38,11 +37,5 @@ props: ['report']
 </script>
 
 <style>
-
-#employee-report-table tr,
-#employee-report-table td,
-#employee-report-table th {
-  width: 25vw;
-}
 
 </style>

@@ -116,10 +116,4 @@ button {
   
 }
 
-input {
-  display: inline-flex;
-  margin: 5px;
-
-}
-
 </style>

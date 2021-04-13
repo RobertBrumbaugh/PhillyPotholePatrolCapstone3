@@ -1,16 +1,18 @@
 <template>
   <div id ="details">
-      <table id="user-details-table" class="user-details-table">
-          <th>User Severity: </th>
-          <th>Reported By: </th>
+    <h1 id="details-header">Pothole Report #{{ report.report_id }} </h1>
+
+      <table id="user-details-table" class="styled-table">
           <th>Date Reported: </th>
           <th>Address: </th>
+          <th>User Severity: </th>
+          <th>Reported By: </th>
           
           <tr>
-            <td>{{ report.user_severity}} </td>
-            <td>{{ report.username }}</td>
-            <td>{{ report.reported }} </td>
+            <td>{{ report.reported}} </td>
             <td>{{ report.location }}</td>
+            <td>{{ report.user_severity }}</td>
+            <td>{{ report.username }} </td>
           </tr>
 
         </table>
@@ -76,8 +78,7 @@ export default {
 
       // find current report with route param id 
       this.report = this.reports.find( report => {
-          return report.report_id == this.$route.params.id;
-          
+          return report.report_id == this.$route.params.id;   
       })
       
       // set marker to report lat/lng
@@ -145,7 +146,5 @@ export default {
   justify-content: center;
 
 }
-
-
 
 </style>

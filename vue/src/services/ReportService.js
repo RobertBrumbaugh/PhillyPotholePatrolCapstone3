@@ -25,21 +25,5 @@ export default {
     getDamageClaims() {
       return axios.get('/damage-claims');
     }
-    
-    // updateStatus(report_id, status_id) {
-    //   return axios.put(`/reports/${report_id}/status/${status_id}`)
-    // },
-
-    // updateInspected(report_id, inspected_date) {
-    //   return axios.put(`/reports/${report_id}/inspected/${inspected_date}`)
-    // },
-
-    // updateRepaired(report_id, repaired_date) {
-    //   return axios.put(`/reports/${report_id}/repaired/${repaired_date}`)
-    // },
-
-    // updateSeverity(report_id, severity_id) {
-    //   return axios.put(`/reports/${report_id}/severity/${severity_id}`)
-    // }
 
 }

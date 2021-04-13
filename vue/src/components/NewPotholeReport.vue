@@ -1,24 +1,23 @@
 <template>
   <div>   
-    <h3>
+    <h3 id="add-headline">
         Please drag or click on the map to mark the location of the pothole you
         are reporting:
-      </h3>
+    </h3>
     <form class="new-pothole-report" v-on:submit.prevent>
       <p>
         Nearest Address to Pin: <u>{{ this.report.location }} </u>
       </p>
       <div>
         <label for="severity">Please rank the pothole's severity:</label>
-        <select name="severity" id="severity" v-model="report.user_severity">
-          <option value="Minor">Minor</option>
-          <option value="Could bust a tire">Could bust a tire</option>
-          <option value="Do not drive over me">Do not drive over me</option>
-          <option value="New route advised">New route advised</option>
-          <option value="Catastrophic">Catastrophic</option>
-        </select>
+          <select name="severity" id="severity" v-model="report.user_severity">
+            <option value="Minor">Minor</option>
+            <option value="Could bust a tire">Could bust a tire</option>
+            <option value="Do not drive over me">Do not drive over me</option>
+            <option value="New route advised">New route advised</option>
+            <option value="Catastrophic">Catastrophic</option>
+          </select>
       </div>
-
       <br />
       <button type="submit" v-on:click="saveReport">Save</button>
       <br />
@@ -58,7 +57,7 @@ export default {
     return {
       report: {
         username: "",
-        user_severity: "",
+        user_severity: "Minor",
         lat: 0,
         lng: 0,
         location: "",
@@ -93,7 +92,7 @@ export default {
         isPhilly = true;
       }
       if (!isPhilly) {
-        window.alert("This is not in Philadelphia");
+        window.alert("Pothole Patrol is currently for Philadelphia potholes only. Please select a pothole inside Philadelphia.");
       } else {
         this.reports.forEach((report) => {
           if (

@@ -3,7 +3,8 @@
     <h1>Public Reporting</h1>
     <h3>The City of Philadelphia has been hard at work repairing potholes.</h3> 
     <p>With the help of the Pothole Patrol Reporting App, we have been able to complete the following work: </p>
-    <table id="public-details-table">
+
+    <table id="public-details-table" class="styled-table">
           <th>Potholes Reported: </th>
           <th>Potholes Scheduled <br>For Inspection:</th>
           <th>Potholes Scheduled <br>For Repair:</th>
@@ -14,7 +15,7 @@
             <td>{{ repaired }}</td>
           </tr>
 
-        </table>
+      </table>
   </div>
 </template>
 

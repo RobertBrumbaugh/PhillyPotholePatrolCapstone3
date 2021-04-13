@@ -3,62 +3,94 @@
     <h1>Active Potholes</h1>
 
     <div class="report" v-if="this.$store.state.role != 'ROLE_EMPLOYEE'">
-     
-      <h3>Sort by User Severity:</h3>
-      <select id="reportFilter" v-model="filter.user_severity">
-        <option value>Show All</option>
-        <option value="Catastrophic">Catastrophic</option>
-        <option value="New route advised">New Route Advised</option>
-        <option value="Do not drive over me">Do Not Drive Over Me</option>
-        <option value="Could bust a tire">Could bust a tire</option>
-        <option value="Minor">Minor</option>
-      </select>
-
-      <h3>Sort by Username:</h3>
-      <input type="text" id="usernameFilter" v-model="filter.username" />
-
-      <h3>Find by Location:</h3>
-      <input type="text" id="locationFilter" v-model="filter.location" />
+      <div id="sort-container">
+        <div id="severity-sort">
+          <h3>
+            <label for="severity-sort"> Sort by User Severity:</label>
+          </h3>
+          <select id="reportFilter" name="severity-sort" v-model="filter.user_severity">
+            <option value>Show All</option>
+            <option value="Catastrophic">Catastrophic</option>
+            <option value="New route advised">New Route Advised</option>
+            <option value="Do not drive over me">Do Not Drive Over Me</option>
+            <option value="Could bust a tire">Could bust a tire</option>
+            <option value="Minor">Minor</option>
+          </select>
+        </div>
+        <div id="user-sort">
+          <h3>
+            <label for="user-sort">Sort by Username: </label>
+          </h3>
+          <input type="text" id="usernameFilter" name="user-sort" v-model="filter.username" />
+        </div>
+        <div id="location-sort">
+          <h3>
+            <label for="location-sort"> Find by Location:</label>
+          </h3>
+          <input type="text" id="locationFilter" name="location-sort" v-model="filter.location" />
+        </div>
+      </div>
 
       <router-link
         v-bind:to="{ name: 'report-details', params: { id: report.report_id } }"
         v-for="report in filteredReports"
         v-bind:key="report.report_id"
-      > 
-        <report-user v-bind:report="report"/>
+      >
+        <report-user v-bind:report="report" />
       </router-link>
     </div>
 
     <div v-else>
-      <h3>Sort by Internal Severity:</h3>
-      <select id="reportFilter" v-model="filter.severity">
-        <option value>Show All</option>
-        <option value="0">0</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-      </select>
-
-      <h3>Sort By Status:</h3>
-      <select id="statusFilter" v-model="filter.status">
-        <option value>Show All</option>
-        <option value="1">Reported</option>
-        <option value="2">Inspected</option>
-        <option value="3">Repaired</option>
-      </select>
-      <br>
-      <h3>Find by Id:</h3>
-      <input type="text" id="reportIdFilter" v-model="filter.report_id" />
-
-      <h3>Find by Location:</h3>
-      <input type="text" id="locationFilter" v-model="filter.location" />
+      <div id="employee-sort">
+      <div id="employee-sort-top">
+        <div id="internal-severity-sort">      
+          <h3>
+            <label for="internal-severity">Sort by Internal Severity:</label>
+          </h3>
+          <select id="reportFilter" name="internal-severity" v-model="filter.severity">
+            <option value>Show All</option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+          </select>
+        </div>
+   
+      <div id="status-sort">
+          <h3>
+            <label for="status-sort">Sort By Status: </label>
+          </h3>
+          <select id="statusFilter" name="status-sort" v-model="filter.status">
+            <option value>Show All</option>
+            <option value="1">Reported</option>
+            <option value="2">Inspected</option>
+            <option value="3">Repaired</option>
+          </select>
+          </div>   
+        </div>
+        <br />
+        <div id="employee-sort-bottom">
+          <div id="id-sort">
+            <h3>
+              <label for="id-sort">Find by Id:</label>
+            </h3>
+            <input type="text" name="id-sort" id="reportIdFilter" v-model="filter.report_id" />
+          </div>
+            <div id="internal-location-sort">
+              <h3>
+                <label for="internal-location-sort"> Find by Location: </label>
+              </h3>
+              <input type="text" name="internal-location-sort" id="locationFilter" v-model="filter.location" />
+            </div>
+          </div>
+        </div>
 
       <router-link
         v-bind:to="{ name: 'edit-report', params: { id: report.report_id } }"
         v-for="report in filteredReports"
         v-bind:key="report.report_id"
       >
-        <report-employee v-bind:report="report"/>
+        <report-employee v-bind:report="report" />
       </router-link>
     </div>
   </div>
@@ -66,25 +98,25 @@
 
 <script>
 import reportService from "../services/ReportService.js";
-import reportUser from "../components/ReportUser"
-import reportEmployee from "../components/ReportEmployee"
+import reportUser from "../components/ReportUser";
+import reportEmployee from "../components/ReportEmployee";
 
 export default {
   name: "report-list",
   components: {
     reportUser,
-    reportEmployee
+    reportEmployee,
   },
   data() {
     return {
       reports: [],
       filter: {
-          severity: "",
-          user_severity: "",
-          username: "",
-          status: "",
-          report_id: "",
-          location: ""
+        severity: "",
+        user_severity: "",
+        username: "",
+        status: "",
+        report_id: "",
+        location: "",
       },
     };
   },
@@ -109,20 +141,22 @@ export default {
         );
       }
       if (this.filter.status != "") {
-       filteredSeverity = filteredSeverity.filter((report) =>
-       report.status == this.filter.status
-       )
-     }
+        filteredSeverity = filteredSeverity.filter(
+          (report) => report.status == this.filter.status
+        );
+      }
       if (this.filter.report_id != "") {
-       filteredSeverity = filteredSeverity.filter((report) =>
-       report.report_id == this.filter.report_id
-       )
-     }
-     if (this.filter.location != "") {
-       filteredSeverity = filteredSeverity.filter((report) =>
-       report.location.toLowerCase().includes(this.filter.location.toLowerCase())
-       )
-     }
+        filteredSeverity = filteredSeverity.filter(
+          (report) => report.report_id == this.filter.report_id
+        );
+      }
+      if (this.filter.location != "") {
+        filteredSeverity = filteredSeverity.filter((report) =>
+          report.location
+            .toLowerCase()
+            .includes(this.filter.location.toLowerCase())
+        );
+      }
       return filteredSeverity.sort((a, b) => {
         return b.report_id - a.report_id;
       });
@@ -159,5 +193,4 @@ export default {
 </script>
 
 <style>
-
 </style>
