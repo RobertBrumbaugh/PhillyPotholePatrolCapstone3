@@ -6,8 +6,10 @@
         are reporting:
       </h3>
 
-      <p> Nearest Address to Pin: <u>{{ this.report.location }} </u></p>
-      <div> 
+      <p>
+        Nearest Address to Pin: <u>{{ this.report.location }} </u>
+      </p>
+      <div>
         <label for="severity">Please rank the pothole's severity:</label>
         <select name="severity" id="severity" v-model="report.user_severity">
           <option value="Minor">Minor</option>
@@ -41,16 +43,14 @@
         />
       </GmapMap>
 
-      
       <p>LAT: {{ marker.position.lat }} LNG: {{ marker.position.lng }}</p>
-      
     </div>
   </div>
 </template>
 
 <script>
 import ReportService from "../services/ReportService";
-import Vue from 'vue';
+import Vue from "vue";
 
 export default {
   name: "new-pothole-report",
@@ -70,6 +70,7 @@ export default {
       mapOptions: {
         disableDefaultUI: false,
       },
+      reports: [],
     };
   },
   mounted() {
@@ -79,34 +80,63 @@ export default {
     // fills in current user's username on the report
     this.report.username = this.$store.state.user.username;
 
+    ReportService.list().then((response) => {
+      this.reports = response.data;
+    });
   },
   methods: {
-     saveReport() {
-       
-// fills in current date and time on the report
-    const date = new Date().toLocaleString();
-    this.report.reported = date;
+    saveReport() {
+      let isReported = false;
+      let isPhilly = false;
+      let str = String(this.report.location);
+      let philly = "Philadelphia";
+      if (str.includes(philly)) {
+        isPhilly = true;
+      }
+      if (!isPhilly) {
+        window.alert("This is not in Philadelphia");
+      } else {
+        this.reports.forEach((report) => {
+          if (
+            Math.abs(report.lat - this.report.lat) < 0.00000000000002 &&
+            Math.abs(report.lng - this.report.lng) < 0.00000000000002
+          ) {
+            isReported = true;
+          }
+        });
+        if (!isReported) {
+          // fills in current date and time on the report
+          const date = new Date().toLocaleString();
+          this.report.reported = date;
 
-        ReportService.addReport(this.report).then((response) => {
-        if (response.status === 201) {
-          this.report = {
-            username: "",
-            lat: "",
-            lng: "",
-            location: "",
-            status: "",
-            reported: "",
-          };
-          this.$router.push("/reports");
+          ReportService.addReport(this.report).then((response) => {
+            if (response.status === 201) {
+              this.report = {
+                username: "",
+                lat: "",
+                lng: "",
+                location: "",
+                status: "",
+                reported: "",
+              };
+              this.$router.push("/reports");
+            }
+          });
+        } else {
+          window.alert("This pothole has already been reported. Thank you.");
         }
-      });
+        // below curly should be commented out if Philadelphia check is to be bypassed
+      }
     },
 
     // sets report.location to current lat/lng by making API call
     getLocation() {
-      Vue.$geocoder.send({lat: this.report.lat, lng: this.report.lng}, response => {
-        this.report.location = String(response.results[0].formatted_address);
-      })
+      Vue.$geocoder.send(
+        { lat: this.report.lat, lng: this.report.lng },
+        (response) => {
+          this.report.location = String(response.results[0].formatted_address);
+        }
+      );
     },
 
     //detects location from browser
@@ -127,7 +157,7 @@ export default {
         this.panToMarker();
 
         // updates report.location
-        this.getLocation()
+        this.getLocation();
       });
     },
 

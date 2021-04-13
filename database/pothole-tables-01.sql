@@ -76,9 +76,11 @@ CREATE TABLE damage_claim
         constraint pk_damage_claim primary key (damage_claim_id)
 );
 
+/**
 ALTER TABLE damage_claim
 ADD CONSTRAINT
         fk_damage_claim_report_id foreign key (report_id) references reports (report_id);
+**/
 
 ALTER TABLE reports
 ADD CONSTRAINT
@@ -104,11 +106,12 @@ INSERT INTO status_types (status_id, status_desc)
         (1, 'reported'),
         (2, 'inspected'),
         (3, 'repaired');
+
         
 INSERT INTO reports (username, lat, lng, location, user_severity, reported, status, severity) 
-        VALUES 
-        ( 'JohnnyQPublic', 39.95277884627590, -75.16361112345678, '123 Fake Street Hollywood CA 90210', 'Minor', '4/5/2021, 9:03:20 AM', 1, 0),
-        ( 'JohnnyQPublic', 39.97277804978631, -75.13161109876543, '123 Fake Street Hollywood CA 90210', 'Could bust a tire', '4/6/2021, 5:13:20 PM', 1, 0);
+        VALUES                                                     
+        ( 'JohnnyQPublic', 39.95277884627598, -75.16361112345678, '123 Fake Street, Hollywood, CA 90210, USA', 'Minor', '4/5/2021, 9:03:20 AM', 1, 0),
+        ( 'JohnnyQPublic', 39.97277804978631, -75.13161109876543, '123 Fake Street, Hollywood, CA 90210, USA', 'Could bust a tire', '4/6/2021, 5:13:20 PM', 1, 0);
         
 INSERT INTO damage_claim (report_id, full_name, phone_number, email, address, incident_date, car, damage_description) 
         VALUES (1, 'Johnny Q Public', '215-555-5555', 'fake@obvious.duh', '123 Fake Street Hollywood CA 90210', '4/5/2021', 'Toyota Corolla', 'Damage to the front passenger side wheel and axle');
