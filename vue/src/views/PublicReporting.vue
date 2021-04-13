@@ -5,13 +5,13 @@
     <p>With the help of the Pothole Patrol Reporting App, we have been able to complete the following work: </p>
     <table id="public-details-table">
           <th>Potholes Reported: </th>
-          <th>Potholes Inspected:</th>
-          <th>Potholes Repaired:</th>
+          <th>Potholes Scheduled <br>For Inspection:</th>
+          <th>Potholes Scheduled <br>For Repair:</th>
 
           <tr>
-            <td>{{ getReported()  }}</td>
-            <td>{{ getInspected() }} </td>
-            <td>{{ getRepaired() }}</td>
+            <td>{{ reported  }}</td>
+            <td>{{ inspected }} </td>
+            <td>{{ repaired }}</td>
           </tr>
 
         </table>
