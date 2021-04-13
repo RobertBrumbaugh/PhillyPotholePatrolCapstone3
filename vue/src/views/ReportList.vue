@@ -13,7 +13,7 @@
         <option value="Minor">Minor</option>
       </select>
 
-      <h3>Sort by username:</h3>
+      <h3>Sort by Username:</h3>
       <input type="text" id="usernameFilter" v-model="filter.username" />
       
       <h3>Find by Location:</h3>
