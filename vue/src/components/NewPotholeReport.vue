@@ -134,7 +134,8 @@ export default {
       Vue.$geocoder.send(
         { lat: this.report.lat, lng: this.report.lng },
         (response) => {
-          this.report.location = String(response.results[0].formatted_address);
+          let address = String(response.results[0].formatted_address);
+          this.report.location = address.substring(0, address.length-5);
         }
       );
     },

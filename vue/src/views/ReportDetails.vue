@@ -23,7 +23,6 @@
         :options="mapOptions"
         style="width: 100vmin; height: 50vmin"
         ref="mapRef"
-        @click="handleMapClick"
       >
         <GmapMarker
           :position="marker.position"
