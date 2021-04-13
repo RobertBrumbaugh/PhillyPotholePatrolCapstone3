@@ -1,11 +1,10 @@
 <template>
-  <div>
-    <form class="new-pothole-report" v-on:submit.prevent>
-      <h3>
+  <div>   
+    <h3>
         Please drag or click on the map to mark the location of the pothole you
         are reporting:
       </h3>
-
+    <form class="new-pothole-report" v-on:submit.prevent>
       <p>
         Nearest Address to Pin: <u>{{ this.report.location }} </u>
       </p>
@@ -24,13 +23,13 @@
       <button type="submit" v-on:click="saveReport">Save</button>
       <br />
     </form>
-    <div id="map">
+    <div id="map" class>
       <GmapMap
         :center="center"
         :zoom="18"
         map-type-id="hybrid"
         :options="mapOptions"
-        style="width: 100vmin; height: 50vmin"
+        style="width: 100vmin; height: 50vmin; position: relative"
         ref="mapRef"
         @click="handleMapClick"
       >

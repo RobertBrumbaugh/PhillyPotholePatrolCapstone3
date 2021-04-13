@@ -3,7 +3,8 @@
     <h1>Active Potholes</h1>
 
     <div class="report" v-if="this.$store.state.role != 'ROLE_EMPLOYEE'">
-      <h3>Sort by User Severity:</h3>
+
+        <h3>Sort by User Severity:</h3>
       <select id="reportFilter" v-model="filter.user_severity">
         <option value>Show All</option>
         <option value="Catastrophic">Catastrophic</option>
@@ -12,13 +13,13 @@
         <option value="Could bust a tire">Could bust a tire</option>
         <option value="Minor">Minor</option>
       </select>
-
+    
       <h3>Sort by Username:</h3>
       <input type="text" id="usernameFilter" v-model="filter.username" />
-      
+    
       <h3>Find by Location:</h3>
       <input type="text" id="locationFilter" v-model="filter.location" />
-
+ 
       <router-link
         v-bind:to="{ name: 'report-details', params: { id: report.report_id } }"
         v-for="report in filteredReports"
