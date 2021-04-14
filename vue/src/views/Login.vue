@@ -15,6 +15,7 @@
       <br>
       <div>
       <label for="username" class="sr-only">Username: </label>
+      <br>
       <input
         type="text"
         id="username"
@@ -28,6 +29,7 @@
       <br>
       <div>
       <label for="password" class="sr-only">Password: </label>
+      <br>
       <input
         type="password"
         id="password"
