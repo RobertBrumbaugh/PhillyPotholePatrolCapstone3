@@ -53,7 +53,7 @@
     <button class="btn-style" id="delete" v-on:click.prevent="deleteReport(report.report_id)">Delete</button>
     </h3>
     <br>
-      <div>
+      <div id="edit-map">
       <GmapMap
         :center="center"
         :zoom="18"
@@ -61,7 +61,6 @@
         :options="mapOptions"
         style="width: 100vmin; height: 50vmin"
         ref="mapRef"
-        @click="handleMapClick"
       >
         <GmapMarker
           :position="marker.position"
@@ -73,6 +72,7 @@
       </GmapMap>
 
     </div>
+    <router-link v-bind:to="{ name: 'report-list' }" > <h3>Return to List</h3> </router-link>
   </div>
 </template>
 
@@ -184,22 +184,6 @@ data() {
       this.marker.position = { lat: e.latLng.lat(), lng: e.latLng.lng() };
       console.log(e);
     },
-    // updateStatus() {
-    //   reportService.updateStatus(report_id, status_id).then((response) => {
-    //     if (response.status === 200) {
-    //           this.$router.push(`/`);
-    //         }
-    //       })
-    // },
-    // updateInspected() {
-    //   reportService.updateInspected(report_id, inspected_date)
-    // },
-    // updateRepaired() {
-    //   reportService.updateRepaired(report_id, repaired_date)
-    // }, 
-    // updateSeverity() {
-    //   reportService.updateSeverity(report_id, severity_id)
-    // },
   }
 
 };
@@ -211,5 +195,6 @@ data() {
   margin: 0 10px;
   padding: 5px;
 }
+
 
 </style>

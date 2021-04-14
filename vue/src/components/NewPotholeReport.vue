@@ -1,13 +1,10 @@
 <template>
-  <div>   
-    <h3 id="add-headline">
+  <div id="new-pothole">   
+    <p id="add-headline">
         Please drag or click on the map to mark the location of the pothole you
         are reporting:
-    </h3>
+    </p>
     <form class="new-pothole-report" v-on:submit.prevent>
-      <p>
-        Nearest Address to Pin: <u>{{ this.report.location }} </u>
-      </p>
       <div>
         <label for="severity">Please rank the pothole's severity:</label>
           <select name="severity" id="severity" v-model="report.user_severity">
@@ -18,9 +15,6 @@
             <option value="Catastrophic">Catastrophic</option>
           </select>
       </div>
-      <br />
-      <button type="submit" v-on:click="saveReport">Save</button>
-      <br />
     </form>
     <div id="map" class>
       <GmapMap
@@ -39,9 +33,13 @@
           @drag="handleMarkerDrag"
           @click="panToMarker"
         />
-      </GmapMap>
-
-      <p>LAT: {{ marker.position.lat }} LNG: {{ marker.position.lng }}</p>
+      </GmapMap> 
+      <button id="save-report" type="submit" v-on:click="saveReport">Save</button>
+      <p id="nearest-address">
+        Nearest Address to Pin: <u>{{ this.report.location }} </u>
+      </p>
+      <p id="lat-lng">
+      Latitude: {{ marker.position.lat }} Longitude: {{ marker.position.lng }}</p>
     </div>
   </div>
 </template>
@@ -199,5 +197,21 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+#save-report {
+  margin-top: 15px;
+}
+
+#new-pothole > p {
+  margin-bottom: 5px;
+}
+
+#lat-lng {
+  margin-top: -5px;
+}
+
+#severity  {
+  margin-bottom: 10px;
 }
 </style>

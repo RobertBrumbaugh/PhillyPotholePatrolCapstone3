@@ -16,6 +16,7 @@
           </tr>
 
         </table>
+         
 
       <div id="map">
       <GmapMap
@@ -36,7 +37,10 @@
       </GmapMap>
 
     </div>
-    <h3><router-link v-bind:to="{ name: 'damage-claim', params: { id: report.report_id } }"> Submit Damage Claim </router-link></h3>
+    <p id="bottom-links">
+     <router-link v-bind:to="{ name: 'damage-claim', params: { id: report.report_id } }"> Submit Damage Claim </router-link> <span> &nbsp; | &nbsp; </span>
+    <router-link v-bind:to="{ name: 'report-list' }" > Return to List</router-link>
+   </p>
   </div>
 </template>
 
@@ -144,7 +148,11 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
 
+#bottom-links {
+  font-size: 20px;
+  font-weight: 600;
 }
 
 </style>
