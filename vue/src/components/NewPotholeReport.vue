@@ -1,9 +1,25 @@
 <template>
   <div id="new-pothole">   
+
     <p id="add-headline">
         Please drag or click on the map to mark the location of the pothole you
-        are reporting:
+        are reporting.
     </p>
+
+<div id="autocomplete">
+      <p class="autocomplete">Or search and move the pin by address:</p>
+      <GmapAutocomplete
+        class="autocomplete" 
+        @place_changed='setPlace'
+      />
+      <button
+        class="autocomplete"
+        @click='moveMarker'
+      >
+        Move Marker
+      </button>
+    </div>
+
     <form class="new-pothole-report" v-on:submit.prevent>
       <div>
         <label for="severity">Please rank the pothole's severity:</label>
@@ -67,6 +83,8 @@ export default {
         disableDefaultUI: false,
       },
       reports: [],
+      currentPlace: null,
+      places: []
     };
   },
   mounted() {
@@ -173,7 +191,6 @@ export default {
     // Moves the map view port to marker
     panToMarker() {
       this.$refs.mapRef.panTo(this.marker.position);
-      // this.$refs.mapRef.setZoom(18);
     },
 
     //Moves the marker to click position on the map
@@ -186,6 +203,26 @@ export default {
 
       // updates report.location
       this.getLocation();
+    },
+
+    setPlace(place) {
+      this.currentPlace = place;
+    },
+
+    moveMarker() {
+      if (this.currentPlace) {
+        this.marker.position = {
+          lat: this.currentPlace.geometry.location.lat(),
+          lng: this.currentPlace.geometry.location.lng(),
+        };
+        this.panToMarker();
+
+        this.report.lat = this.marker.position.lat; 
+        this.report.lng = this.marker.position.lng; 
+
+        this.getLocation();
+        this.currentPlace = null;
+      }
     },
   },
 };
@@ -214,4 +251,12 @@ export default {
 #severity  {
   margin-bottom: 10px;
 }
+
+.autocomplete {
+  display: inline;
+}
+
+/* #autocomplete {
+  margin-bottom: 10px;
+} */
 </style>
