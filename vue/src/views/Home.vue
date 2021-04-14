@@ -1,9 +1,10 @@
 <template
 >
   <div class="home">
-    <router-link v-bind:to="{ name: 'report-list' }" v-if="this.$store.state.role == 'ROLE_EMPLOYEE'"> <h1>Employee Portal</h1> </router-link>
+    <router-link v-bind:to="{ name: 'report-list' }" > <h1 v-if="this.$store.state.role == 'ROLE_EMPLOYEE'">Employee Portal</h1>  
     <h1 v-else>Welcome to Pothole Patrol</h1>
     <img src="@/assets/PotholeLogo.png">
+    </router-link>
   </div>
 </template>
 

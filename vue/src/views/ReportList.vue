@@ -40,34 +40,47 @@
       </router-link>
     </div>
 
+    <!-- Employee Section -->
     <div v-else>
+      <div class="paragraphs">
+        <p class="paragraph-margin">
+           <strong>Active Reports:</strong> {{activeReports}}
+        </p>
+        <p class="paragraph-margin">
+           <strong>Need to be scheduled for inspection:</strong> {{notInspected}}
+        </p>
+        <p>
+           <strong>Need to be scheduled for repair:</strong> {{notRepaired}}
+        </p>
+        </div>
       <div id="employee-sort">
-      <div id="employee-sort-top">
-        <div id="internal-severity-sort">      
-          <h3>
-            <label for="internal-severity">Sort by Internal Severity:</label>
-          </h3>
-          <select id="reportFilter" name="internal-severity" v-model="filter.severity">
-            <option value>Show All</option>
-            <option value="0">0</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-          </select>
+        <div id="employee-sort-top">
+          <div id="internal-severity-sort">      
+            <h3>
+              <label for="internal-severity">Sort by Internal Severity:</label>
+            </h3>
+            <select id="reportFilter" name="internal-severity" v-model="filter.severity">
+              <option value>Show All</option>
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+            </select>
+          </div>
+    
+        <div id="status-sort">
+            <h3>
+              <label for="status-sort">Sort By Status: </label>
+            </h3>
+            <select id="statusFilter" name="status-sort" v-model="filter.status">
+              <option value>Show All</option>
+              <option value="1">Reported</option>
+              <option value="2">Inspected</option>
+              <option value="3">Repaired</option>
+            </select>
+            </div>   
         </div>
-   
-      <div id="status-sort">
-          <h3>
-            <label for="status-sort">Sort By Status: </label>
-          </h3>
-          <select id="statusFilter" name="status-sort" v-model="filter.status">
-            <option value>Show All</option>
-            <option value="1">Reported</option>
-            <option value="2">Inspected</option>
-            <option value="3">Repaired</option>
-          </select>
-          </div>   
-        </div>
+        <!-- this line break breaks up the sort divs -->
         <br />
         <div id="employee-sort-bottom">
           <div id="id-sort">
@@ -109,6 +122,9 @@ export default {
   },
   data() {
     return {
+      activeReports: '',
+      notInspected: '',
+      notRepaired: '',
       reports: [],
       filter: {
         severity: "",
@@ -165,7 +181,26 @@ export default {
   created() {
     reportService.list().then((response) => {
       this.reports = response.data;
+      this.activeReports = this.reports.length;
+
+      let notInspected = 0;
+      let notRepaired = 0;
+
+      this.reports.forEach(report => {
+        if (report.inspected == null) {
+          notInspected++;
+        }
+        if (report.repaired == null) {
+          notRepaired++;
+        }
+        this.notInspected = notInspected;
+        this.notRepaired = notRepaired;
+      });
+
+
+
     });
+    
   },
   methods: {
     reportStatus(report) {
@@ -193,4 +228,11 @@ export default {
 </script>
 
 <style>
+.paragraphs {
+  font-size: 20px;
+}
+
+.paragraph-margin {
+  margin-bottom: -10px;
+}
 </style>
