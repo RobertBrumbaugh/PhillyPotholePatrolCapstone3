@@ -112,8 +112,9 @@ export default {
       } else {
         this.reports.forEach((report) => {
           if (
-            Math.abs(report.lat - this.report.lat) < 0.0004 &&
-            Math.abs(report.lng - this.report.lng) < 0.0004
+            // Math.abs(report.lat - this.report.lat) < 0.0004 &&
+            // Math.abs(report.lng - this.report.lng) < 0.0004
+            report.location == this.report.location
           ) {
             isReported = true;
           }
