@@ -5,13 +5,13 @@
     <p>With the help of the Pothole Patrol Reporting App, we have been able to complete the following work: </p>
 
     <table id="public-details-table" class="styled-table">
-          <th>Potholes Reported: </th>
-          <th>Potholes Scheduled <br>For Inspection:</th>
-          <th>Potholes Scheduled <br>For Repair:</th>
+          <th>Potholes Reported:</th>
+          <th>Potholes Inspected:</th>
+          <th>Potholes Repaired:</th>
 
           <tr>
-            <td>{{ reported  }}</td>
-            <td>{{ inspected }} </td>
+            <td>{{ reported }}</td>
+            <td>{{ inspected }}</td>
             <td>{{ repaired }}</td>
           </tr>
 
@@ -35,39 +35,30 @@ export default {
   created() {
     ReportService.list().then((response) => {
       this.reports = response.data;
-      this.reported = this.getReported();
-      this.inspected = this.getInspected();
-      this.repaired = this.getRepaired();
+      this.getReported();
+      this.getStatus();
     });
   },
   methods: {
     getReported() {
-      let counter = 0;
+      this.reported = this.reports.length;
+    },
+    getStatus() {
+      let status2 = 0;
+      let status3 = 0;
       this.reports.forEach((report) => {
-        if (report.reported != null) {
-          counter++;
+        if (report.status == 2) {
+          status2++;
         }
       });
-      return counter;
-    },
-    getInspected() {
-      let counter = 0;
       this.reports.forEach((report) => {
-        if (report.inspected != null) {
-          counter++;
+        if (report.status == 3) {
+          status3++;
         }
       });
-      return counter;
-    },
-    getRepaired() {
-      let counter = 0;
-      this.reports.forEach((report) => {
-        if (report.repaired != null) {
-          counter++;
-        }
-      });
-      return counter;
-    },
+      this.inspected = status2 + status3;
+      this.repaired = status3;
+    }
   },
 };
 </script>
